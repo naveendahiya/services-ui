@@ -1,0 +1,943 @@
+.mediaViewInfo {
+	--web-view-name: Home 1366 x 768;
+	--web-view-id: Home_1366_x_768;
+	--web-scale-on-resize: true;
+	--web-center-horizontally: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Home_1366_x_768;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+#Home_1366_x_768 {
+	position: absolute;
+	width: 1366px;
+	height: 3421px;
+	background-color: rgba(255,255,255,1);
+	overflow: hidden;
+	--web-view-name: Home 1366 x 768;
+	--web-view-id: Home_1366_x_768;
+	--web-scale-on-resize: true;
+	--web-center-horizontally: true;
+	--web-enable-deep-linking: true;
+}
+#Rectangle_1 {
+	fill: rgba(255,255,255,1);
+}
+.Rectangle_1 {
+	position: absolute;
+	overflow: visible;
+	width: 1366px;
+	height: 419px;
+	left: 0px;
+	top: 0px;
+}
+#bubble-people-vector-bubbling- {
+	opacity: 0.99;
+	position: absolute;
+	width: 1365px;
+	height: 642.5px;
+	left: 0px;
+	top: 15px;
+	overflow: visible;
+}
+#Rectangle_2 {
+	opacity: 0.65;
+	fill: rgba(255,255,255,1);
+}
+.Rectangle_2 {
+	position: absolute;
+	overflow: visible;
+	width: 1366px;
+	height: 60px;
+	left: 0px;
+	top: 0px;
+}
+#Company____name {
+	opacity: 0.87;
+	left: 78px;
+	top: 6px;
+	position: absolute;
+	overflow: visible;
+	width: 127px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Rockwell;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 25px;
+	color: rgba(112,112,112,1);
+}
+#Line_1 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_1 {
+	overflow: visible;
+	position: absolute;
+	width: 1px;
+	height: 49px;
+	left: 229.5px;
+	top: 11.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Company______Logo {
+	opacity: 0.94;
+	left: 282px;
+	top: 6px;
+	position: absolute;
+	overflow: visible;
+	width: 127px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Rockwell;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 25px;
+	color: rgba(112,112,112,1);
+}
+#Rectangle_3 {
+	fill: rgba(109,158,195,1);
+	stroke: rgba(254,253,253,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_3 {
+	position: absolute;
+	overflow: visible;
+	width: 121px;
+	height: 31px;
+	left: 448px;
+	top: 22px;
+}
+#C {
+	left: 580px;
+	top: 15px;
+	position: absolute;
+	overflow: visible;
+	width: 15px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Sitka Banner;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 25px;
+	color: rgba(255,255,255,1);
+}
+#Categories {
+	left: 590px;
+	top: 28px;
+	position: absolute;
+	overflow: visible;
+	width: 109px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Sitka Banner;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 25px;
+	color: rgba(95,74,74,1);
+}
+#Browse_Tasks {
+	left: 717px;
+	top: 28px;
+	position: absolute;
+	overflow: visible;
+	width: 139px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Sitka Banner;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 25px;
+	color: rgba(95,74,74,1);
+}
+#How_it_works {
+	left: 874px;
+	top: 24px;
+	position: absolute;
+	overflow: visible;
+	width: 137px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Sitka Banner;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 25px;
+	color: rgba(95,74,74,1);
+}
+#Sign_up__Login {
+	left: 1029px;
+	top: 26px;
+	position: absolute;
+	overflow: visible;
+	width: 145px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Sitka Banner;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 23px;
+	color: rgba(95,74,74,1);
+}
+#Rectangle_4 {
+	fill: rgba(109,158,195,1);
+}
+.Rectangle_4 {
+	position: absolute;
+	overflow: visible;
+	width: 169px;
+	height: 27px;
+	left: 1192px;
+	top: 23px;
+}
+#Connect_with_experts_to_get_th {
+	left: 190px;
+	top: 266px;
+	position: absolute;
+	overflow: hidden;
+	width: 959px;
+	height: 77px;
+	text-align: center;
+	font-family: Gadugi;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 50px;
+	color: rgba(10,10,10,1);
+}
+#Its_amazing_what_you_cant_do_y {
+	opacity: 0.88;
+	left: 297px;
+	top: 334px;
+	position: absolute;
+	overflow: visible;
+	width: 774px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Sitka Display;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 50px;
+	color: rgba(10,10,10,1);
+}
+#Rectangle_5 {
+	opacity: 0.97;
+	fill: rgba(109,158,195,1);
+}
+.Rectangle_5 {
+	position: absolute;
+	overflow: visible;
+	width: 172px;
+	height: 46px;
+	left: 397px;
+	top: 447px;
+}
+#Get_started_now {
+	left: 408px;
+	top: 459px;
+	position: absolute;
+	overflow: visible;
+	width: 151px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Sitka Banner;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 23px;
+	color: rgba(255,255,255,1);
+}
+#Rectangle_6 {
+	opacity: 0.85;
+	filter: blur(17px);
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_6 {
+	mix-blend-mode: luminosity;
+	position: absolute;
+	overflow: visible;
+	width: 1150px;
+	height: 178px;
+	left: 123px;
+	top: 544px;
+}
+#Mask_Group_2 {
+	position: absolute;
+	width: 97px;
+	height: 91px;
+	left: 344px;
+	top: 576px;
+	overflow: visible;
+}
+#Mask_Group_7 {
+	position: absolute;
+	width: 97px;
+	height: 91px;
+	left: 1169px;
+	top: 576px;
+	overflow: visible;
+}
+#Mask_Group_6 {
+	position: absolute;
+	width: 97px;
+	height: 91px;
+	left: 1017px;
+	top: 576px;
+	overflow: visible;
+}
+#Mask_Group_5 {
+	position: absolute;
+	width: 97px;
+	height: 91px;
+	left: 845px;
+	top: 576px;
+	overflow: visible;
+}
+#Mask_Group_3 {
+	position: absolute;
+	width: 97px;
+	height: 91px;
+	left: 516px;
+	top: 576px;
+	overflow: visible;
+}
+#Mask_Group_4 {
+	position: absolute;
+	width: 97px;
+	height: 91px;
+	left: 688px;
+	top: 576px;
+	overflow: visible;
+}
+#Became_a_tasker {
+	left: 1205px;
+	top: 26px;
+	position: absolute;
+	overflow: visible;
+	width: 153px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Sitka Banner;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 23px;
+	color: rgba(255,255,255,1);
+}
+#Post_a_task {
+	left: 458px;
+	top: 26px;
+	position: absolute;
+	overflow: visible;
+	width: 101px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Sitka Banner;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 23px;
+	color: rgba(255,255,255,1);
+}
+#Mask_Group_9 {
+	position: absolute;
+	width: 97px;
+	height: 91px;
+	left: 169px;
+	top: 576px;
+	overflow: visible;
+}
+#Home_Cleaning_ {
+	left: 155px;
+	top: 677px;
+	position: absolute;
+	overflow: visible;
+	width: 143px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(112,112,112,1);
+}
+#Salon_at_home_ {
+	left: 331px;
+	top: 677px;
+	position: absolute;
+	overflow: visible;
+	width: 134px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(112,112,112,1);
+}
+#Plumbers {
+	left: 524px;
+	top: 677px;
+	position: absolute;
+	overflow: visible;
+	width: 83px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(112,112,112,1);
+}
+#painters {
+	left: 698px;
+	top: 677px;
+	position: absolute;
+	overflow: visible;
+	width: 72px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(112,112,112,1);
+}
+#Electricians_ {
+	left: 845px;
+	top: 677px;
+	position: absolute;
+	overflow: visible;
+	width: 104px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(112,112,112,1);
+}
+#Yoga {
+	left: 1040px;
+	top: 677px;
+	position: absolute;
+	overflow: visible;
+	width: 44px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(112,112,112,1);
+}
+#Gym {
+	left: 1201px;
+	top: 677px;
+	position: absolute;
+	overflow: visible;
+	width: 41px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(112,112,112,1);
+}
+#Rectangle_7 {
+	fill: rgba(18,93,93,1);
+	stroke: rgba(14,31,243,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_7 {
+	position: absolute;
+	overflow: visible;
+	width: 1319px;
+	height: 181px;
+	left: 24px;
+	top: 811px;
+}
+#After_Pay {
+	left: 111px;
+	top: 841px;
+	position: absolute;
+	overflow: visible;
+	width: 159px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 40px;
+	color: rgba(255,255,255,1);
+}
+#Now_Available_ {
+	left: 123px;
+	top: 904px;
+	position: absolute;
+	overflow: visible;
+	width: 132px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(255,255,255,1);
+}
+#Get_it_done_now_Pay_later {
+	left: 398px;
+	top: 849px;
+	position: absolute;
+	overflow: visible;
+	width: 290px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(255,255,255,1);
+}
+#Repay_in_4_fortnightly_instalm {
+	left: 398px;
+	top: 906px;
+	position: absolute;
+	overflow: visible;
+	width: 370px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(255,255,255,1);
+}
+#No_interest {
+	left: 816px;
+	top: 864px;
+	position: absolute;
+	overflow: visible;
+	width: 124px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(255,255,255,1);
+}
+#Available_on_payments_up_to_15 {
+	left: 816px;
+	top: 907px;
+	position: absolute;
+	overflow: visible;
+	width: 395px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(255,255,255,1);
+}
+#Learn_more {
+	left: 1179px;
+	top: 851px;
+	position: absolute;
+	overflow: visible;
+	width: 126px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(255,255,255,1);
+}
+#Rectangle_8 {
+	fill: rgba(202,211,213,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_8 {
+	position: absolute;
+	overflow: visible;
+	width: 1366px;
+	height: 369px;
+	left: 0px;
+	top: 1365px;
+}
+#Line_2 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_2 {
+	overflow: visible;
+	position: absolute;
+	width: 1234.002px;
+	height: 4px;
+	left: 66.5px;
+	top: 1097.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Ready_to_get_that_to-do_list_d {
+	left: 234px;
+	top: 1187px;
+	position: absolute;
+	overflow: visible;
+	width: 374px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(10,10,10,1);
+}
+#Rectangle_9 {
+	fill: rgba(109,158,195,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_9 {
+	position: absolute;
+	overflow: visible;
+	width: 255px;
+	height: 74px;
+	left: 924px;
+	top: 1187px;
+}
+#Get_Started_now {
+	left: 945px;
+	top: 1204px;
+	position: absolute;
+	overflow: visible;
+	width: 214px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#See_what_others_are_getting_do {
+	left: 389px;
+	top: 1399px;
+	position: absolute;
+	overflow: visible;
+	width: 626px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 40px;
+	color: rgba(10,10,10,1);
+}
+#Moving_home {
+	left: 48px;
+	top: 1485px;
+	position: absolute;
+	overflow: visible;
+	width: 248px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 40px;
+	color: rgba(10,10,10,1);
+}
+#Starting_a_business {
+	left: 353px;
+	top: 1485px;
+	position: absolute;
+	overflow: visible;
+	width: 331px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 40px;
+	color: rgba(10,10,10,1);
+}
+#Fixing_stuff {
+	left: 752px;
+	top: 1485px;
+	position: absolute;
+	overflow: visible;
+	width: 194px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 40px;
+	color: rgba(10,10,10,1);
+}
+#Hosting_a_party {
+	left: 1030px;
+	top: 1485px;
+	position: absolute;
+	overflow: visible;
+	width: 272px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 40px;
+	color: rgba(10,10,10,1);
+}
+#Got_a_few_boxes_to_shift_an_ap {
+	left: 48px;
+	top: 1571px;
+	position: absolute;
+	overflow: visible;
+	width: 1067px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: lighter;
+	font-size: 25px;
+	color: rgba(10,10,10,1);
+}
+#HOW_WE_WORK {
+	left: 521px;
+	top: 1790px;
+	position: absolute;
+	overflow: visible;
+	width: 326px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 40px;
+	color: rgba(10,10,10,1);
+}
+#Check_out_the_video_below_to_s {
+	left: 328px;
+	top: 1862px;
+	position: absolute;
+	overflow: visible;
+	width: 663px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: lighter;
+	font-size: 25px;
+	color: rgba(10,10,10,1);
+}
+#Rectangle_10 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_10 {
+	position: absolute;
+	overflow: visible;
+	width: 1162px;
+	height: 454px;
+	left: 113px;
+	top: 2004px;
+}
+#Playable_Video {
+	left: 509px;
+	top: 2183px;
+	position: absolute;
+	overflow: visible;
+	width: 349px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 50px;
+	color: rgba(10,10,10,1);
+}
+#Post_your_Task_Tell_us_what_yo {
+	left: 177px;
+	top: 2548px;
+	position: absolute;
+	overflow: visible;
+	width: 244px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(10,10,10,1);
+}
+#Review_offers_Get_offers_from_ {
+	left: 578px;
+	top: 2546px;
+	position: absolute;
+	overflow: visible;
+	width: 272px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(10,10,10,1);
+}
+#Get_it_done_Choose_the_right_p {
+	left: 1041px;
+	top: 2540px;
+	position: absolute;
+	overflow: visible;
+	width: 549px;
+	height: 165px;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(0,0,0,1);
+}
+#basket {
+	position: absolute;
+	width: 54.957px;
+	height: 56.199px;
+	left: 86px;
+	top: 2569px;
+	overflow: visible;
+}
+#Path_10 {
+	fill: rgba(0,0,0,1);
+}
+.Path_10 {
+	overflow: visible;
+	position: absolute;
+	width: 45.958px;
+	height: 13.501px;
+	left: 4.5px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Path_11 {
+	fill: rgba(0,0,0,1);
+}
+.Path_11 {
+	overflow: visible;
+	position: absolute;
+	width: 54.957px;
+	height: 6.75px;
+	left: 0px;
+	top: 20.604px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Path_12 {
+	fill: rgba(0,0,0,1);
+}
+.Path_12 {
+	overflow: visible;
+	position: absolute;
+	width: 50.457px;
+	height: 18px;
+	left: 2.25px;
+	top: 38.199px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Path_13 {
+	fill: rgba(0,0,0,1);
+}
+.Path_13 {
+	overflow: visible;
+	position: absolute;
+	width: 39.207px;
+	height: 9px;
+	left: 7.875px;
+	top: 42.699px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#bookmark-check {
+	position: absolute;
+	width: 44.606px;
+	height: 63.939px;
+	left: 476.643px;
+	top: 2564.664px;
+	overflow: visible;
+}
+#Path_14 {
+	fill: rgba(0,0,0,1);
+}
+.Path_14 {
+	overflow: visible;
+	position: absolute;
+	width: 37.854px;
+	height: 63.939px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Path_15 {
+	fill: rgba(0,0,0,1);
+}
+.Path_15 {
+	overflow: visible;
+	position: absolute;
+	width: 12.378px;
+	height: 9.005px;
+	left: 32.227px;
+	top: 2.247px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#person-check-fill {
+	fill: rgba(0,0,0,1);
+}
+.person-check-fill {
+	overflow: visible;
+	position: absolute;
+	width: 67.79px;
+	height: 57px;
+	left: 937.211px;
+	top: 2566px;
+	transform: matrix(1,0,0,1,0,0);
+}
