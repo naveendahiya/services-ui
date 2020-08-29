@@ -2,6 +2,9 @@ import React from 'react';
 import { Card, Icon } from 'semantic-ui-react'
 import '../styles/taskcard.scss';
 
+import calendar from '../images/calendar.svg';
+import profile from '../images/user.svg';
+import location from '../images/location.svg';
 
 const TaskCard = () => {
     return (
@@ -16,14 +19,23 @@ const TaskCard = () => {
                         $100
                         </div>
                         <div className="photo">
-
+                          <img src={profile} className='user-profile' />
                         </div>
                         <div className="info">
-                            
+                            <div className="location">
+                                <img src={location} className='location-img' />
+                                <div className="text-1">Remote</div>
+                            </div>
+                            <div className="date">
+                                <img src={calendar} className='date-img' />  
+                                <div className="text-2">Sat, 5 Sep</div>
+                            </div>
                         </div>
                     </Card.Description>
                 </Card.Content>
-                <Card.Content extra>
+                <Card.Content className='bottom'>
+                    <div className="status">OPEN</div>
+                    <div className="offer"> -1 offer</div>
                 </Card.Content>
             </Card>
         </>

@@ -9,7 +9,7 @@ const Tasks = () => {
         <React.Fragment>
             <CssBaseline />
             <Container maxWidth="xl">
-                <Typography component="div" style={{ backgroundColor: 'white', height: '100vh', marginTop: '60px', paddingTop: '10px' }}>
+                <Typography component="div" style={{ backgroundColor: 'white', height: '100%', marginTop: '60px', paddingTop: '10px' }}>
                    <TaskCard />
                 </Typography>
             </Container>

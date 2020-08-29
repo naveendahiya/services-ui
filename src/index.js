@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+// import App from './App';
 import Header from './components/header';
-import Tasks from './components/tasklist';
+// import Tasks from './components/tasklist';
+// import TaskDetail from "./components/taskDetail";
+import TaskForm from "./components/taskForm";
 import * as serviceWorker from './serviceWorker';
 import 'semantic-ui-css/semantic.min.css'
 
@@ -10,7 +12,7 @@ import 'semantic-ui-css/semantic.min.css'
 ReactDOM.render(
   <React.StrictMode>
     <Header />
-    <Tasks />
+    <TaskForm />
   </React.StrictMode>,
   document.getElementById('root')
 );
