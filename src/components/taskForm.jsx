@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import '../styles/taskForm.scss';
 import {
     Button,
@@ -9,24 +11,48 @@ import {
     Form,
     Input,
     Radio,
-    Select,
     TextArea,
 } from 'semantic-ui-react';
 
-const options = [
-    { key: 'm', text: 'Male', value: 'male' },
-    { key: 'f', text: 'Female', value: 'female' },
-    { key: 'o', text: 'Other', value: 'other' },
-]
 
 
 export default function TaskForm() {
+    const [startDate, setStartDate] = useState(new Date());
+    const [value, setValue] = useState('Online');
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [suburb,  setSuburb] = useState('');
+    const [price, setPrice] = useState('');
+    const [address, setAddress] = useState('');
+    const [latitude, setLatitude] = useState(0);
+    const [longitude, setLongitude] = useState(0);
+
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            setLatitude(position.coords.latitude);
+            setLongitude(position.coords.longitude);
+        });
+    },[])
+
+    const submit = () => {
+        const data = {
+            'description': description,
+            'price': price,
+            'title': title,
+            'due_date': startDate,
+            'status': 'Open',
+            'creater': 1,
+        };
+        console.log(data);
+        console.log(latitude);
+        console.log(longitude);
+    }
 
     return (
         <React.Fragment>
             <CssBaseline />
             <Container maxWidth="sm">
-                <Typography component="div" style={{ backgroundColor: 'white', height: '100%', marginTop: '60px', paddingTop: '10px' }}>
+                <Typography component="div" style={{ backgroundColor: 'white', height: '100vh', marginTop: '60px', paddingTop: '10px' }}>
                     <div className='task-create-form'>
                         <div className='heading'>Tell us what you need done?</div>
 
@@ -34,55 +60,59 @@ export default function TaskForm() {
                             <Form.Group widths='equal'>
                                 <Form.Field
                                     control={Input}
-                                    label='First name'
-                                    placeholder='First name'
+                                    label='What you need done?'
+                                    value={title}
+                                    onChange={e => setTitle(e.target.value)}
+                                    placeholder='e.g. Help move my sofa'
                                 />
                                 <Form.Field
-                                    control={Input}
-                                    label='Last name'
-                                    placeholder='Last name'
-                                />
-                                <Form.Field
-                                    control={Select}
-                                    label='Gender'
-                                    options={options}
-                                    placeholder='Gender'
+                                    control={TextArea}
+                                    value={description}
+                                    onChange={e => setDescription(e.target.value)}
+                                    label='What are the details?'
+                                    placeholder='Be as specific as you can about what needs doing'
                                 />
                             </Form.Group>
                             <Form.Group inline>
-                                <label>Quantity</label>
+                                <label>Where do you need it done?</label>
                                 <Form.Field
                                     control={Radio}
-                                    label='One'
-                                    value='1'
-                                    // checked={value === '1'}
-                                    // onChange={handleChange}
+                                    label='Online'
+                                    value='Online'
+                                    checked={value === 'Online'}
+                                    onChange={() => setValue('Online')}
                                 />
                                 <Form.Field
                                     control={Radio}
-                                    label='Two'
-                                    value='2'
-                                    // checked={value === '2'}
-                                    // onChange={handleChange}
-                                />
-                                <Form.Field
-                                    control={Radio}
-                                    label='Three'
-                                    value='3'
-                                    // checked={value === '3'}
-                                    // onChange={handleChange}
+                                    label='InPerson'
+                                    value='InPerson'
+                                    checked={value === 'InPerson'}
+                                    onChange={() => setValue('InPerson')}
                                 />
                             </Form.Group>
+                            <Form.Field>
+                            <Input icon='location arrow' iconPosition='left' value={suburb} onChange={e => setSuburb(e.target.value)} placeholder='Pincode' />
+                            </Form.Field>
+                            <Form.Field>
+                                <label>When do you need it done?</label>
+                                <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
+                            </Form.Field>
+                            <Form.Field>
+                                <label>What is your budget?</label>
+                                <Input icon='dollar sign' iconPosition='left' placeholder='Amount' value={price} onChange={e => setPrice(e.target.value)} />
+                            </Form.Field>
                             <Form.Field
                                 control={TextArea}
-                                label='About'
-                                placeholder='Tell us more about you...'
+                                label='Address'
+                                placeholder='write your full addresss'
+                                value={address}
+                                onChange={e => setAddress(e.target.value)}
                             />
                             <Form.Field
                                 control={Checkbox}
                                 label='I agree to the Terms and Conditions'
                             />
-                            <Form.Field control={Button}>Submit</Form.Field>
+                            <Form.Field control={Button} onClick={submit}>Submit</Form.Field>
                         </Form>
 
                     </div>
