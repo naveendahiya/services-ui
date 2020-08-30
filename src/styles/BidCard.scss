@@ -1,0 +1,20 @@
+.bid-card{
+  width: 100% !important;
+  .header{
+    display: grid !important;
+    grid-template-columns: 3fr 1fr !important;
+    grid-template-rows: 1fr !important;
+    span{
+      grid-column: 1;
+    }
+    .user-pic-bid{
+      grid-column: 2;
+      grid-row: 1;
+      height: 50px;
+      width: 50px;
+    }
+  }
+  .description{
+    height: fit-content !important;
+  }
+}

@@ -7,6 +7,8 @@ import location from '../images/location.svg';
 import calendar from '../images/calendar.svg';
 import '../styles/taskDetail.scss';
 import { Divider } from 'semantic-ui-react'
+import BidCard from "./bidCard";
+
 
 
 export default function TaskDetail() {
@@ -78,7 +80,7 @@ export default function TaskDetail() {
                        <div className='outer detail-offer'>
                            <span>Offers</span>
                            <div className='detail-offer-list'>
-                               NO offers yet
+                             <BidCard />
                            </div>
                        </div>
                    </div>
