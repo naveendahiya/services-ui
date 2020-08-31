@@ -9,22 +9,21 @@ import '../styles/taskDetail.scss';
 import {Button, Card, Divider, Label} from 'semantic-ui-react'
 import BidCard from "./bidCard";
 import user from "../images/user.svg";
+import BidForm from "./bidForm";
+const { forwardRef, useRef } = React;
 
 
 
 export default function TaskDetail() {
+    const childRef = useRef();
     return (
         <React.Fragment>
             <CssBaseline />
             <Container maxWidth="sm">
                 <Typography component="div" style={{ backgroundColor: 'white', height: '100%', marginTop: '56px', paddingTop: '10px', position: 'relative'  }} >
+                    <BidForm ref={childRef} />
                     <div className='status-bar'></div>
                     <div className='task-detail' >
-                       {/*<div className='outer detail-status-button'>*/}
-                       {/*    <div className='detail-follow'>*/}
-                       {/*        Follow*/}
-                       {/*    </div>*/}
-                       {/*</div>*/}
                        <div className='outer detail-heading'>
                            Installation of boat accessories
                        </div>
@@ -78,6 +77,7 @@ export default function TaskDetail() {
                                        icon='checkmark'
                                        positive
                                        className='offer-button'
+                                       onClick={() => childRef.current.onOpen()}
                                    />
                                </div>
                            </Card.Content>
