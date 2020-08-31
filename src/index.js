@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import App from './App';
 import Header from './components/header';
-// import Tasks from './components/tasklist';
+import Tasks from './components/tasklist';
 import TaskDetail from "./components/taskDetail";
-// import TaskForm from "./components/taskForm";
-// import Home from './components/home';
+import TaskForm from "./components/taskForm";
+import Home from './components/home';
 import * as serviceWorker from './serviceWorker';
 import 'semantic-ui-css/semantic.min.css'
 
@@ -13,7 +13,7 @@ import 'semantic-ui-css/semantic.min.css'
 ReactDOM.render(
   <React.StrictMode>
     <Header />
-    <TaskDetail />
+    <Home />
   </React.StrictMode>,
   document.getElementById('root')
 );

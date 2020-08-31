@@ -6,8 +6,9 @@ import profile from '../images/user.svg';
 import location from '../images/location.svg';
 import calendar from '../images/calendar.svg';
 import '../styles/taskDetail.scss';
-import { Divider } from 'semantic-ui-react'
+import {Button, Card, Divider, Label} from 'semantic-ui-react'
 import BidCard from "./bidCard";
+import user from "../images/user.svg";
 
 
 
@@ -16,16 +17,14 @@ export default function TaskDetail() {
         <React.Fragment>
             <CssBaseline />
             <Container maxWidth="sm">
-                <Typography component="div" style={{ backgroundColor: 'white', height: '100%', marginTop: '60px', paddingTop: '10px'  }} >
-                   <div className='task-detail' >
-                       <div className='outer detail-status-button'>
-                           <div className='detail-status'>
-                               OPEN
-                           </div>
-                           <div className='detail-follow'>
-                               Follow
-                           </div>
-                       </div>
+                <Typography component="div" style={{ backgroundColor: 'white', height: '100%', marginTop: '56px', paddingTop: '10px', position: 'relative'  }} >
+                    <div className='status-bar'></div>
+                    <div className='task-detail' >
+                       {/*<div className='outer detail-status-button'>*/}
+                       {/*    <div className='detail-follow'>*/}
+                       {/*        Follow*/}
+                       {/*    </div>*/}
+                       {/*</div>*/}
                        <div className='outer detail-heading'>
                            Installation of boat accessories
                        </div>
@@ -34,8 +33,8 @@ export default function TaskDetail() {
                                <img src={profile} className='detail-user-img' />
                            </div>
                            <div className='detail-user-name'>
-                               <spam>POSTED BY</spam><br></br>
-                               <span>Tom T.</span>
+                               <spam className='detail-user-heading' >POSTED BY</spam><br></br>
+                               <span className='detail-user-value' >Tom T.</span>
                            </div>
                            <div className='detail-user-time'>
                                2 hours ago
@@ -47,8 +46,8 @@ export default function TaskDetail() {
                                <img src={location} className='location-img' />
                            </div>
                            <div className='detail-location-data'>
-                               <spam>LOCATION</spam>
-                               <span>
+                               <spam className='detail-location-heading' >LOCATION</spam>
+                               <span className='detail-location-value' >
                                    Geelong VIC, Australia
                                </span>
                            </div>
@@ -59,16 +58,30 @@ export default function TaskDetail() {
                                <img src={calendar} className='date-img' />
                            </div>
                            <div className='detail-date-data'>
-                              <span>DUE DATE</span>
-                               <span>Tuesday, 1st Sep 2020</span>
+                              <span className='detail-date-heading'>DUE DATE</span>
+                               <span className='detail-date-value' >Tuesday, 1st Sep 2020</span>
                            </div>
                        </div>
                        <Divider />
-                       <div className='outer offer-box'>
-                           <span>TASK BUDGET</span>
-                           <span>$100</span>
-                           <div className='make-offer' >Make an offer</div>
-                       </div>
+
+                       <Card className='outer offer-card'>
+                           <Card.Content>
+                               <Card.Header className='offer-card-header'>
+                                   <span className='offer-info' >Task Budget</span>
+                                   <span className='offer-price' >$100</span>
+                               </Card.Header>
+                               <Divider />
+                               <div className='offer-button-box'>
+                                   <Button
+                                       content="Make an offer"
+                                       labelPosition='right'
+                                       icon='checkmark'
+                                       positive
+                                       className='offer-button'
+                                   />
+                               </div>
+                           </Card.Content>
+                       </Card>
                        <Divider />
                        <div className='outer detail-info'>
                            <span>Details</span>

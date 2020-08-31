@@ -28,10 +28,12 @@ const useStyles = makeStyles((theme) => ({
   },
   search: {
     position: 'relative',
-    borderRadius: theme.shape.borderRadius,
+    borderRadius: '0px',
+    border: '1px solid #c4c4c4',
     backgroundColor: fade(theme.palette.common.white, 0.15),
     '&:hover': {
       backgroundColor: fade(theme.palette.common.white, 0.25),
+      border: '2px solid #2320CC'
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
@@ -144,7 +146,7 @@ export default function Header() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="fixed" elevation={0} >
+      <AppBar position="fixed" color={'white'} className='header-main'  elevation={0} >
         <Toolbar>
           <IconButton
             edge="start"
