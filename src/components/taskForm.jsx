@@ -6,7 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import '../styles/taskForm.scss';
 import {
-    Button,
+    Button, Card,
     Checkbox,
     Form,
     Input,
@@ -52,67 +52,93 @@ export default function TaskForm() {
         <React.Fragment>
             <CssBaseline />
             <Container maxWidth="sm">
-                <Typography component="div" style={{ backgroundColor: 'white', height: '100vh', marginTop: '60px', paddingTop: '10px' }}>
+                <Typography component="div" style={{ backgroundColor: 'white', height: 'fit-content', marginTop: '60px', paddingTop: '10px' }}>
                     <div className='task-create-form'>
                         <div className='heading'>Tell us what you need done?</div>
 
                         <Form>
-                            <Form.Group widths='equal'>
-                                <Form.Field
-                                    control={Input}
-                                    label='What you need done?'
-                                    value={title}
-                                    onChange={e => setTitle(e.target.value)}
-                                    placeholder='e.g. Help move my sofa'
-                                />
-                                <Form.Field
-                                    control={TextArea}
-                                    value={description}
-                                    onChange={e => setDescription(e.target.value)}
-                                    label='What are the details?'
-                                    placeholder='Be as specific as you can about what needs doing'
-                                />
-                            </Form.Group>
-                            <Form.Group inline>
-                                <label>Where do you need it done?</label>
-                                <Form.Field
-                                    control={Radio}
-                                    label='Online'
-                                    value='Online'
-                                    checked={value === 'Online'}
-                                    onChange={() => setValue('Online')}
-                                />
-                                <Form.Field
-                                    control={Radio}
-                                    label='InPerson'
-                                    value='InPerson'
-                                    checked={value === 'InPerson'}
-                                    onChange={() => setValue('InPerson')}
-                                />
-                            </Form.Group>
-                            <Form.Field>
-                            <Input icon='location arrow' iconPosition='left' value={suburb} onChange={e => setSuburb(e.target.value)} placeholder='Pincode' />
-                            </Form.Field>
-                            <Form.Field>
-                                <label>When do you need it done?</label>
-                                <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
-                            </Form.Field>
-                            <Form.Field>
-                                <label>What is your budget?</label>
-                                <Input icon='dollar sign' iconPosition='left' placeholder='Amount' value={price} onChange={e => setPrice(e.target.value)} />
-                            </Form.Field>
-                            <Form.Field
-                                control={TextArea}
-                                label='Address'
-                                placeholder='write your full addresss'
-                                value={address}
-                                onChange={e => setAddress(e.target.value)}
-                            />
+                                <Card className='input-card' >
+                                    <Card.Content>
+                                        <div className='input-label' >What you need done?</div>
+                                        <Card.Description>
+                                            <Form.Field
+                                                control={Input}
+                                                  value={title}
+                                                onChange={e => setTitle(e.target.value)}
+                                            />
+                                        </Card.Description>
+                                    </Card.Content>
+                                </Card>
+                                <Card className='input-card' >
+                                    <Card.Content>
+                                        <div className='input-label' >What are the details?</div>
+                                        <Card.Description>
+                                            <Form.Field
+                                                control={TextArea}
+                                                value={description}
+                                                onChange={e => setDescription(e.target.value)}
+                                                placeholder='Be as specific as you can about what needs doing'
+                                            />
+                                        </Card.Description>
+                                    </Card.Content>
+                                </Card>
+                            <Card className='input-card' >
+                                <Card.Content>
+                                    <div className='input-label' >Suburb</div>
+                                    <Card.Description>
+                                        <Form.Field>
+                                            <Input icon='location arrow' iconPosition='left' value={suburb} onChange={e => setSuburb(e.target.value)} placeholder='Pincode' />
+                                        </Form.Field>
+                                    </Card.Description>
+                                </Card.Content>
+                            </Card>
+                            <Card className='input-card' >
+                                <Card.Content>
+                                    <div className='input-label' >When do you need it done?</div>
+                                    <Card.Description>
+                                        <Form.Field>
+                                            <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
+                                        </Form.Field>
+                                    </Card.Description>
+                                </Card.Content>
+                            </Card>
+                            <Card className='input-card' >
+                                <Card.Content>
+                                    <div className='input-label' >What is your budget?</div>
+                                    <Card.Description>
+                                        <Form.Field>
+                                            <Input icon='dollar sign' iconPosition='left' placeholder='Amount' value={price} onChange={e => setPrice(e.target.value)} />
+                                        </Form.Field>
+                                    </Card.Description>
+                                </Card.Content>
+                            </Card>
+                            <Card className='input-card' >
+                                <Card.Content>
+                                    <div className='input-label' >Address</div>
+                                    <Card.Description>
+                                        <Form.Field
+                                            control={TextArea}
+                                            placeholder='write your full addresss'
+                                            value={address}
+                                            onChange={e => setAddress(e.target.value)}
+                                        />
+                                    </Card.Description>
+                                </Card.Content>
+                            </Card>
+
                             <Form.Field
                                 control={Checkbox}
                                 label='I agree to the Terms and Conditions'
                             />
-                            <Form.Field control={Button} onClick={submit}>Submit</Form.Field>
+                            <div className='task-form-actions'>
+                                <Button
+                                    content="Submit"
+                                    labelPosition='right'
+                                    icon='checkmark'
+                                    positive
+                                    className='submit-button-task'
+                                />
+                            </div>
                         </Form>
 
                     </div>

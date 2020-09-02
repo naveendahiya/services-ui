@@ -13,7 +13,7 @@ import 'semantic-ui-css/semantic.min.css'
 ReactDOM.render(
   <React.StrictMode>
     <Header />
-    <TaskDetail />
+    <TaskForm />
   </React.StrictMode>,
   document.getElementById('root')
 );
