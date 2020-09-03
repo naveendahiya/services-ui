@@ -5,10 +5,13 @@ import '../styles/taskcard.scss';
 import calendar from '../images/calendar.svg';
 import profile from '../images/user.svg';
 import location from '../images/location.svg';
+import { Link } from "react-router-dom";
+
 
 const TaskCard = (props) => {
     return (
         <>
+            <Link to='/app/tasks/'+${props.task.title}+'/' >
             <Card className='task-card'>
                 <Card.Content>
                     <Card.Description className='task-card-desc'>
@@ -38,6 +41,7 @@ const TaskCard = (props) => {
                     <div className="offer"> -1 offer</div>
                 </Card.Content>
             </Card>
+            </Link>
         </>
     )
 }

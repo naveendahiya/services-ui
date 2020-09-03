@@ -29,7 +29,7 @@ const Tasks = () => {
         <React.Fragment>
             <CssBaseline />
             <Container maxWidth="xl">
-                <Typography component="div" style={{ backgroundColor: 'white', height: 'fit-content', marginTop: '60px', paddingTop: '10px' }}>
+                <Typography component="div" style={{ backgroundColor: 'white', height: 'fit-content', marginTop: '60px', paddingTop: '10px', minHeight: '100vh' }}>
                     {List()}
                 </Typography>
             </Container>

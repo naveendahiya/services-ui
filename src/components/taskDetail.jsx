@@ -14,7 +14,7 @@ const { forwardRef, useRef } = React;
 
 
 
-export default function TaskDetail() {
+export default function TaskDetail(props) {
     const childRef = useRef();
     return (
         <React.Fragment>

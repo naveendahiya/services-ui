@@ -32,7 +32,7 @@ const ROUTES = [
                 component: Tasks,
             },
             {
-                path: '/app/?name',
+                path: '/app/tasks/:name',
                 key: 'APP_TASK_DETAIL',
                 exact: true,
                 component: TaskDetail,
