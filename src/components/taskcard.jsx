@@ -6,17 +6,17 @@ import calendar from '../images/calendar.svg';
 import profile from '../images/user.svg';
 import location from '../images/location.svg';
 
-const TaskCard = () => {
+const TaskCard = (props) => {
     return (
         <>
             <Card className='task-card'>
                 <Card.Content>
                     <Card.Description className='task-card-desc'>
                         <div className="title">
-                        Need a Vietnamese Person to contact people for me
+                            {props.task.title}
                         </div>
                         <div className="price">
-                        $100
+                        ${props.task.price}
                         </div>
                         <div className="photo">
                           <img src={profile} className='user-profile' />
@@ -28,7 +28,7 @@ const TaskCard = () => {
                             </div>
                             <div className="date">
                                 <img src={calendar} className='date-img' />  
-                                <div className="text-2">Sat, 5 Sep</div>
+                                <div className="text-2">{props.task.due_date}</div>
                             </div>
                         </div>
                     </Card.Description>

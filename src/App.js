@@ -1,10 +1,13 @@
 import React from 'react';
+import Header from './components/header';
+import ROUTES, { RenderRoutes } from "./config/routes";
 
 function App() {
   return (
-    <div className="App">
-       <h2>hello world</h2>
-    </div>
+    <>
+        <Header />
+        <RenderRoutes routes={ROUTES} />
+        </>
   );
 }
 

@@ -1,20 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import App from './App';
-import Header from './components/header';
-import Tasks from './components/tasklist';
-import TaskDetail from "./components/taskDetail";
-import TaskForm from "./components/taskForm";
-import Home from './components/home';
+import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter } from "react-router-dom";
 import 'semantic-ui-css/semantic.min.css'
 
 
 ReactDOM.render(
+    <BrowserRouter>
   <React.StrictMode>
-    <Header />
-    <TaskForm />
-  </React.StrictMode>,
+  <App />
+  </React.StrictMode>
+    </BrowserRouter>,
   document.getElementById('root')
 );
 
