@@ -1,3 +1,5 @@
+@import "./mixins";
+
 *{
     font-size: 18px;
 }
@@ -28,15 +30,14 @@
                 grid-column: 2;
                 font-family: 'Source Sans Pro', sans-serif;
                 font-weight: 600;
-                display: flex;
+                @include flex-row;
                 justify-content: center;
                 font-size: 30px;
             }
             .photo{
                 grid-row: 2;
                 grid-column: 2;
-                display: flex;
-                flex-direction: row;
+                @include flex-row;
                 justify-content: center;
                 .user-profile{
                     height: 40px;
@@ -46,13 +47,11 @@
             .info{
                 grid-row: 2;
                 grid-column: 1;
-                display: flex;
-                flex-direction: column;
+                @include flex-column;
                 font-family: 'Source Sans Pro', sans-serif;
                 font-weight: 400;
                 .location{
-                    display: flex;
-                    flex-direction: row;
+                    @include flex-row;
                     margin-bottom: 10px;
                     align-items: center;
                     .location-img{
@@ -62,8 +61,7 @@
                     }
                 }
                 .date{
-                    display: flex;
-                    flex-direction: row;
+                    @include flex-row;
                     align-items: center;
                     .date-img{
                         width: 15px;
@@ -74,8 +72,7 @@
             }
         }
         .bottom{
-            display: flex !important;
-            flex-direction: row !important;
+            @include flex-row-important;
             height: 30px !important;
             .status{
                 font-size: 15px !important;

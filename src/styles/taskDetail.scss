@@ -1,3 +1,5 @@
+@import './mixins';
+
 *{
   font-size: 18px;
 }
@@ -13,22 +15,17 @@
 }
 .task-detail{
   margin-top: 20px;
-  display: flex;
-  flex-direction: column;
+  @include  flex-column;
   .outer{
     width: 100%;
     height: fit-content;
     margin-bottom: 20px;
   }
   .detail-status-button{
-    display: flex;
-    flex-direction: row;
+    @include flex-row;
     justify-content: space-between;
     .detail-follow{
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
+      @include flex-row-center;
       border-radius: 8px;
       background-color: lightblue;
       width: 60px;
@@ -40,8 +37,7 @@
     font-family: 'Nunito Sans', sans-serif;
     font-size: 25px;
     font-weight: 700;
-    display: flex;
-    flex-direction: row;
+    @include flex-row;
     justify-content: flex-start;
   }
   .detail-user{
@@ -50,10 +46,7 @@
     grid-template-rows: 1fr;
     grid-gap: 10px;
     .detail-user-image {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
+      @include flex-row-center;
       grid-column: 1;
       .detail-user-img {
         width: 35px;
@@ -76,8 +69,7 @@
     }
     .detail-user-time{
       grid-column: 3;
-      display: flex;
-      flex-direction: row;
+      @include flex-row;
       font-size: 12px;
       align-items: flex-end;
       font-family: 'Nunito Sans', sans-serif;
@@ -91,10 +83,7 @@
     grid-template-rows: 1fr;
     .detail-location-img{
       grid-column: 1;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
+      @include flex-row-center;
       filter: invert(0%) sepia(0%) saturate(7465%) hue-rotate(338deg) brightness(91%) contrast(109%);
       opacity: 0.5;
       .location-img{
@@ -104,8 +93,7 @@
     }
     .detail-location-data{
       grid-column: 2;
-      display: flex;
-      flex-direction: column;
+      @include flex-column;
       .detail-location-heading{
         font-family: 'Nunito Sans', sans-serif;
         font-weight: 400;
@@ -123,9 +111,7 @@
     grid-template-columns: 1fr 4fr;
     .detail-date-img{
       grid-column: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flex-row-center;
       .date-img{
         width: 30px;
         height: 30px;
@@ -161,10 +147,7 @@
       transform: translateY(-10px) !important;
     }
     .header{
-       display: flex !important;
-       flex-direction: column !important;
-       align-items: center !important;
-       justify-content: center !important;
+      @include flex-column-center-important;
       .offer-info{
         font-family: 'Nunito Sans', sans-serif;
         font-weight: 400;
@@ -181,27 +164,16 @@
       }
     }
     .offer-button-box{
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
+      @include flex-row-center;
     }
     .offer-button{
-      &:hover{
-        background-color: #2320CC !important;
-      }
-      background-color: #5553FF !important;
-      letter-spacing: 0.35px !important;
-      border: 1px solid #5553FF !important;
-      transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms !important;
-      font-family: "Nunito Sans", Verdana, Helvetica, sans-serif !important;
+      @include blue-button;
     }
   }
   .detail-info{
     font-size: 18px;
     line-height: 1.7;
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 400;
     color: rgb(61,61, 78);
@@ -214,8 +186,7 @@
     }
   }
   .detail-offer{
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     span{
       font-size: 20px;
       margin-bottom: 10px;

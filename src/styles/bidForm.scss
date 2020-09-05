@@ -1,3 +1,5 @@
+@import "./mixins";
+
 .input-desc{
   width: 100% !important  ;
   height: fit-content !important;
@@ -30,21 +32,13 @@ textarea{
 }
 
 .form-controls{
-  display: flex;
-  flex-direction: row;
+  @include flex-row;
   justify-content: flex-end;
   align-items: center;
 }
 
 .submit-button{
-  &:hover{
-    background-color: #2320CC !important;
-  }
-  background-color: #5553FF !important;
-  letter-spacing: 0.35px !important;
-  border: 1px solid #5553FF !important;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms !important;
-  font-family: "Nunito Sans", Verdana, Helvetica, sans-serif !important;
+  @include blue-button;
 }
 
 .nope-button{

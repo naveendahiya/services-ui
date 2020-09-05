@@ -1,3 +1,5 @@
+@import "./mixins";
+
 .bid-card{
   width: 100% !important;
   box-shadow: rgba(0,0,0,0.1) 0px 0px 7px !important;
@@ -42,14 +44,6 @@
     font-family: 'Raleway', sans-serif;
   }
   .accept-button{
-    &:hover{
-      background-color: #2320CC !important;
-    }
-    background-color: #5553FF !important;
-    letter-spacing: 0.35px !important;
-    border: 1px solid #5553FF !important;
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms !important;
-    font-family: "Nunito Sans", Verdana, Helvetica, sans-serif !important;
-
+    @include blue-button;
   }
 }

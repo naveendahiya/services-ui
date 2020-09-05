@@ -1,23 +1,14 @@
+@import './mixins';
+
 .card-browse {
   width: 100% !important;
   height: 40% !important;
   margin-bottom: 30px !important;
   margin-top: 20px !important;
-  display: flex;
-  justify-content: center !important;
-  align-items: center !important;
+  @include flex-row-center;
   background-color: rgb(241, 241, 255) !important;
   color: rgb(85, 83, 255) !important;
-  border-radius: 4px !important;
-  border: medium none !important;
-  box-shadow: none !important;
-  transition: all 0.2s ease 0s !important;
-  font-family: 'Nunito Sans', sans-serif !important;
-  font-weight: 700 !important;
-  &:hover{
-    box-shadow: rgb(229, 229, 229) 0px 4px 1.8em !important;
-    outline: currentcolor none medium !important;
-  }
+  @include card-property;
   .description{
     font-size: 30px !important;
   }
@@ -26,20 +17,10 @@
   width: 100% !important;
   height: 40% !important;
   box-shadow: none !important;
-  display: flex;
-  justify-content: center !important;
-  align-items: center !important;
+  @include flex-row-center;
   background-color: rgb(245, 245, 245) !important;
   color: rgb(85,83,255) !important;
-  border-radius: 4px !important;
-  border: medium none !important;
-  transition: all 0.2s ease 0s !important;
-  font-family: 'Nunito Sans', sans-serif !important;
-  font-weight: 700 !important;
-  &:hover{
-    box-shadow: rgb(229, 229, 229) 0px 4px 1.8em !important;
-    outline: currentcolor none medium !important;
-  }
+  @include card-property;
   .description{
     font-size: 30px !important;
   }
