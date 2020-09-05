@@ -23,7 +23,7 @@ export default function TaskDetail(props) {
             <CssBaseline />
             <Container maxWidth="sm">
                 <Typography component="div" style={{ backgroundColor: 'white', height: '100%', marginTop: '56px', paddingTop: '10px', position: 'relative'  }} >
-                    <BidForm ref={childRef} />
+                    <BidForm ref={childRef}  id={task.id} />
                     <div className='status-bar'></div>
                     <div className='task-detail' >
                        <div className='outer detail-heading'>

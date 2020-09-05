@@ -21,7 +21,6 @@ const TaskCreate = () => {
 
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
-    const [taskid, setTaskid] = useState(-1);
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -41,7 +40,6 @@ const TaskCreate = () => {
             address: '',
             latitude: latitude,
             longtiude: longitude,
-            taskid: taskid,
         },
 
         validationSchema: Yup.object({
@@ -85,7 +83,6 @@ const TaskCreate = () => {
                     .then(res => {
                         console.log(res);
                         task_id = res.data.id;
-                        setTaskid(res.data.id);
                     })
             let data2 = {
                 'address':  formik.values.address,
