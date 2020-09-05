@@ -15,6 +15,8 @@ const { forwardRef, useRef } = React;
 
 
 export default function TaskDetail(props) {
+    const task = props.location.task;
+    console.log(task);
     const childRef = useRef();
     return (
         <React.Fragment>
@@ -25,7 +27,7 @@ export default function TaskDetail(props) {
                     <div className='status-bar'></div>
                     <div className='task-detail' >
                        <div className='outer detail-heading'>
-                           Installation of boat accessories
+                           {task.title}
                        </div>
                        <div className='outer detail-user'>
                            <div className='detail-user-image'>
@@ -67,7 +69,7 @@ export default function TaskDetail(props) {
                            <Card.Content>
                                <Card.Header className='offer-card-header'>
                                    <span className='offer-info' >Task Budget</span>
-                                   <span className='offer-price' >$100</span>
+                                   <span className='offer-price' >${task.price}</span>
                                </Card.Header>
                                <Divider />
                                <div className='offer-button-box'>
@@ -86,7 +88,7 @@ export default function TaskDetail(props) {
                        <div className='outer detail-info'>
                            <span>Details</span>
                            <div className='detail-text'>
-                               I currently have a domain name with Gandi, I'm looking to change it and would like advice of who to change to or whether to just remain with Gandi.  I need at least 3 emails to be associated with the domain name.  I also want someone to do a simple but professional looking website for me, I'll provide text and some images.  The website will only be for people to find out more information from so no need to be easily found in searches other than by searching for the business name or website address.  I want the website to be easy for me to edit once set up and not wanting to pay for a subscription service like wix.  I have heard bootstrap may be good??  I would also want someone who could give me a bit of support initially on how to edit the website once it's set up.  Thanks. Also require receipt with ABN. Not sure if it matters but I have the pre 2012 free version of gsuite.
+                               {task.description}
                            </div>
                        </div>
                        <Divider />

@@ -11,7 +11,10 @@ import { Link } from "react-router-dom";
 const TaskCard = (props) => {
     return (
         <>
-            <Link to='/app/tasks/'+${props.task.title}+'/' >
+            <Link to={{
+                pathname: `/app/tasks/${props.task.title}`,
+                task: props.task
+            }}>
             <Card className='task-card'>
                 <Card.Content>
                     <Card.Description className='task-card-desc'>
