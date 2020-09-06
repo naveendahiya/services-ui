@@ -15,12 +15,15 @@ import {
 } from 'semantic-ui-react';
 import * as Yup from 'yup';
 import apiClient from "../config/apiclient";
-
+import {
+    useHistory
+} from "react-router-dom";
 
 const TaskCreate = () => {
 
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
+    let history = useHistory()
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -63,12 +66,14 @@ const TaskCreate = () => {
             suburb: Yup.number()
                 .required('Required'),
 
-            taskid: Yup.number()
-                .required('Required'),
+            latitude: Yup.number(),
+            longitude: Yup.number(),
+            startDate: Yup.date(),
 
         }),
 
         onSubmit: async(values) => {
+            alert(JSON.stringify(values, null, 2));
             let data = {
                 'description': formik.values.description,
                 'price': parseFloat(formik.values.price),
@@ -78,7 +83,7 @@ const TaskCreate = () => {
                 'creater': 1,
             };
             data = JSON.stringify(data);
-            let task_id;
+            let task_id = -1;
             await apiClient.post(`/tasks/`, data)
                     .then(res => {
                         console.log(res);
@@ -96,6 +101,15 @@ const TaskCreate = () => {
                     .then(res => {
                         console.log(res);
                     })
+            if(task_id !== -1){
+                console.log('hello');
+                return(
+                history.push({
+                    pathname: `/app/tasks/${task_id}`,
+                    state: { task: data }
+                })
+                )
+            }
         },
 
     });
@@ -203,7 +217,6 @@ const TaskCreate = () => {
                 />
             </div>
         </form>
-
     );
 
 };

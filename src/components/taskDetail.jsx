@@ -12,7 +12,6 @@ import BidForm from "./bidForm";
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import {
     useParams,
-    withRouter,
     useHistory
 } from "react-router-dom";
 import apiClient from "../config/apiclient";
@@ -23,15 +22,19 @@ const { forwardRef, useRef } = React;
 function TaskDetail(props) {
 
     const [taskdata, setTaskdata] = useState([]);
+    const [offers, setOffers] = useState([]);
     let { id } = useParams();
     let history = useHistory();
 
 
-    if(props.task){
-        setTaskdata(props.location.task);
-    }
-
     useEffect(() => {
+        if(props.task){
+            setTaskdata(props.location.task);
+        }
+
+        if(props.location.state){
+            setTaskdata(props.location.state.task);
+        }
         if(taskdata.length === 0){
             apiClient.get(`/tasks/${id}`)
                 .then(res => {
@@ -39,9 +42,27 @@ function TaskDetail(props) {
                     setTaskdata(res.data);
                 })
         }
+        apiClient.get(`/bids/?task=${id}`)
+            .then(res => {
+                setOffers(res.data);
+            })
 
     }, []);
 
+
+    const OfferList = () => {
+        let products = [];
+        if(offers.length > 0){
+            products = offers.map((offer) =>
+                <BidCard offer={offer} />
+            )
+        }else{
+           products = <h3>No Offers Yet For This Task.</h3>
+        }
+        return (
+            products
+        )
+    }
 
 
     const childRef = useRef();
@@ -123,7 +144,7 @@ function TaskDetail(props) {
                        <div className='outer detail-offer'>
                            <span>Offers</span>
                            <div className='detail-offer-list'>
-                             <BidCard />
+                               {OfferList()}
                            </div>
                        </div>
                    </div>

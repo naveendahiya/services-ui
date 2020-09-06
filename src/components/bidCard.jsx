@@ -3,7 +3,7 @@ import { Card, Button, Divider } from 'semantic-ui-react';
 import user from '../images/user.svg';
 import '../styles/BidCard.scss';
 
-const BidCard = ()  => {
+const BidCard = (props)  => {
     return(
         <>
             <Card className='bid-card'>
