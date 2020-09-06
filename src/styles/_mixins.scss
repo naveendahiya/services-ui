@@ -65,3 +65,18 @@
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms !important;
   font-family: "Nunito Sans", Verdana, Helvetica, sans-serif !important;
 }
+
+@mixin back-button{
+  height: 40px !important;
+  width: 40px !important;
+  position: absolute !important;
+  top: 30px !important;
+  right: 0 !important;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms !important;
+  color: rgba(0,0,0,0.54) !important;
+  border-radius: 2px !important;
+  &:hover{
+    cursor: pointer !important;
+    background-color: rgb(245,245,245) !important;
+  }
+}

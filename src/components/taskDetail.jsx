@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -8,26 +8,54 @@ import calendar from '../images/calendar.svg';
 import '../styles/taskDetail.scss';
 import {Button, Card, Divider, Label} from 'semantic-ui-react'
 import BidCard from "./bidCard";
-import user from "../images/user.svg";
 import BidForm from "./bidForm";
+import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
+import {
+    useParams,
+    withRouter,
+    useHistory
+} from "react-router-dom";
+import apiClient from "../config/apiclient";
 const { forwardRef, useRef } = React;
 
 
 
-export default function TaskDetail(props) {
-    const task = props.location.task;
-    console.log(task);
+function TaskDetail(props) {
+
+    const [taskdata, setTaskdata] = useState([]);
+    let { id } = useParams();
+    let history = useHistory();
+
+
+    if(props.task){
+        setTaskdata(props.location.task);
+    }
+
+    useEffect(() => {
+        if(taskdata.length === 0){
+            apiClient.get(`/tasks/${id}`)
+                .then(res => {
+                    console.log(res.data);
+                    setTaskdata(res.data);
+                })
+        }
+
+    }, []);
+
+
+
     const childRef = useRef();
     return (
         <React.Fragment>
             <CssBaseline />
             <Container maxWidth="sm">
                 <Typography component="div" style={{ backgroundColor: 'white', height: '100%', marginTop: '56px', paddingTop: '10px', position: 'relative'  }} >
-                    <BidForm ref={childRef}  id={task.id} />
+                    <BidForm ref={childRef}  id={taskdata.id} />
                     <div className='status-bar'></div>
+                    <KeyboardArrowLeftIcon className='back-button'  onClick={() => history.goBack()} />
                     <div className='task-detail' >
                        <div className='outer detail-heading'>
-                           {task.title}
+                           {taskdata.title}
                        </div>
                        <div className='outer detail-user'>
                            <div className='detail-user-image'>
@@ -69,7 +97,7 @@ export default function TaskDetail(props) {
                            <Card.Content>
                                <Card.Header className='offer-card-header'>
                                    <span className='offer-info' >Task Budget</span>
-                                   <span className='offer-price' >${task.price}</span>
+                                   <span className='offer-price' >${taskdata.price}</span>
                                </Card.Header>
                                <Divider />
                                <div className='offer-button-box'>
@@ -88,7 +116,7 @@ export default function TaskDetail(props) {
                        <div className='outer detail-info'>
                            <span>Details</span>
                            <div className='detail-text'>
-                               {task.description}
+                               {taskdata.description}
                            </div>
                        </div>
                        <Divider />
@@ -104,3 +132,5 @@ export default function TaskDetail(props) {
         </React.Fragment>
     );
 }
+
+export default TaskDetail;

@@ -18,11 +18,13 @@
             display: grid !important;
             grid-template-columns: 3fr 1fr !important;
             grid-template-rows: 1fr 1fr !important;
+            height: fit-content !important;
             .title{
                 grid-row: 1;
                 grid-column: 1;
                 font-family: 'Source Sans Pro', sans-serif;
                 font-weight: 600;
+                height: fit-content !important;
             }
             .price{
                 margin-left: 10px;
@@ -32,7 +34,8 @@
                 font-weight: 600;
                 @include flex-row;
                 justify-content: center;
-                font-size: 30px;
+                font-size: 25px;
+                height: fit-content !important;
             }
             .photo{
                 grid-row: 2;

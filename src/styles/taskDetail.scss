@@ -13,6 +13,9 @@
   width: 415px;
   left: -16px;
 }
+.back-button{
+  @include back-button;
+}
 .task-detail{
   margin-top: 20px;
   @include  flex-column;

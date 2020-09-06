@@ -12,7 +12,7 @@ const TaskCard = (props) => {
     return (
         <>
             <Link to={{
-                pathname: `/app/tasks/${props.task.title}`,
+                pathname: `/app/tasks/${props.task.id}`,
                 task: props.task
             }}>
             <Card className='task-card'>
