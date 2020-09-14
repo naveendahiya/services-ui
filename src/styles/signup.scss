@@ -1,0 +1,72 @@
+@import "./mixins";
+
+.MuiContainer-root{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.signup-container{
+    @include flex-column;
+    height: 100vh;
+    width: 100%;
+    .signup-heading{
+        width: 100%;
+        height: 17%;
+        @include flex-row-center;
+        font-family: "Nunito Sans", Verdana, Helvetica, sans-serif !important;
+        font-weight: 700;
+        font-size: 30px;
+        background-color: rgb(250, 250, 250);
+    }
+    .signup-form{
+        width: 100%;
+        height: 73%;
+        @include flex-column;
+        padding: 10px;
+        .form-component{
+            width: 100%;
+            height: 67%;
+            padding: 10px;
+        }
+        .form-info{
+            width: 100%;
+            height: 33%;
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+            font-size: 13px;
+            span{
+                text-decoration: underline;
+                font-family: "Nunito Sans", Verdana, Helvetica, sans-serif !important;
+                font-weight: 700;
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .signup-extra{
+        width: 100%;
+        height: 10%;
+        @include flex-row;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding: 15px;
+        color: blue;
+        .login-button{
+            font-family: "Nunito Sans", Verdana, Helvetica, sans-serif !important;
+            font-weight: 400;
+            font-size: 13px;
+            &:hover{
+                cursor: pointer;
+            }   
+        }
+        .forget-password{
+            font-family: "Nunito Sans", Verdana, Helvetica, sans-serif !important;
+            font-weight: 400;
+            font-size: 13px;
+            &:hover{
+                cursor: pointer;
+            }   
+        }
+    }
+}

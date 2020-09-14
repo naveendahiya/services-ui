@@ -80,3 +80,9 @@
     background-color: rgb(245,245,245) !important;
   }
 }
+
+
+@mixin padding-x{
+  padding-left: 16px;
+  padding-right: 16px;
+}
