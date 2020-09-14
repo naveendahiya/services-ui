@@ -6,9 +6,10 @@ import Home from '../components/home';
 import Tasks from "../components/tasklist";
 import TaskDetail from "../components/taskDetail";
 import SignUp from '../components/authentication/signup';
+import LogIn from '../components/authentication/login';
 
 const ROUTES = [
-    { path: "/", key: "ROOT", exact: true, component: SignUp },
+    { path: "/", key: "ROOT", exact: true, component: LogIn },
     {
         path: "/app",
         key: "APP",

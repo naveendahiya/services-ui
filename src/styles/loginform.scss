@@ -1,0 +1,51 @@
+@import './mixins';
+
+.login-form{
+    width: 100% !important; 
+    height: 100% !important;
+    @include flex-column-center-important;
+    .email{
+        width: 100% !important;
+        margin-bottom: 15px !important;
+        .ui.input{
+            width: 100% !important;
+        }
+        .ui.input > input{
+            width: 100% !important;
+        }
+    }
+    .username{
+        width: 100% !important;
+        margin-bottom: 15px !important;
+        .ui.input{
+            width: 100% !important;
+        }
+        .ui.input > input{
+            width: 100% !important;
+        }
+    }
+    .password{
+        width: 100% !important;
+        margin-bottom: 15px !important;
+        .ui.input{
+            width: 100% !important;
+        }
+        .ui.input > input{
+            width: 100% !important;
+        }
+    }
+    .form-controls{
+        width: 100%;
+        .login{
+          @include blue-button;
+          width: 100% !important;
+        }
+    }
+    .error{
+        color: red;
+        font-size: 10px;
+        font-family: "Nunito Sans", Verdana, Helvetica, sans-serif !important;
+        margin-bottom: 13px;
+        width: 100%;
+    }
+}
