@@ -10,7 +10,7 @@ export default function SignUp() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="sm">
+      <Container maxWidth="sm" className='signup-box' >
         <Typography
           component="div"
           style={{ backgroundColor: "white", height: "100vh" }}

@@ -10,6 +10,7 @@ import LogIn from '../components/authentication/login';
 
 const ROUTES = [
     { path: "/", key: "ROOT", exact: true, component: LogIn },
+    {path: '/signup', key: "ROOT_SIGNUP", exact: true, component: SignUp},
     {
         path: "/app",
         key: "APP",

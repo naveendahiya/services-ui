@@ -102,7 +102,6 @@ const TaskCreate = () => {
                         console.log(res);
                     })
             if(task_id !== -1){
-                console.log('hello');
                 return(
                 history.push({
                     pathname: `/app/tasks/${task_id}`,

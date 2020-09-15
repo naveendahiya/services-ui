@@ -144,7 +144,7 @@ export default function Header() {
     </Menu>
   );
   
-  if(localStorage.getItem('LoggedIn') == 'true'){
+  if(sessionStorage.getItem('LoggedIn') == 'true'){
     return (
       <div className={classes.grow}>
         <AppBar position="fixed" color={'white'} className='header-main'  elevation={0} >

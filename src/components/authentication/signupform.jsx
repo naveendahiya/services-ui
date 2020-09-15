@@ -15,6 +15,7 @@ const SignUpForm = () => {
       username: "",
       email: "",
       password: "",
+      passwordConfirmation: "",
     },
 
     validationSchema: Yup.object({
@@ -27,6 +28,8 @@ const SignUpForm = () => {
         password: Yup.string()
             .min('Please enter a password of atleast 8 characters')
             .required('Required'),
+        passwordConfirmation: Yup.string()
+            .required('Required'),
     }),
 
     onSubmit: async (values) => {
@@ -35,12 +38,13 @@ const SignUpForm = () => {
       let data = {
         username: formik.values.username,
         email: formik.values.email,
-        password: formik.values.password,
+        password1: formik.values.password,
+        password2: formik.values.passwordConfirmation,
       };
       data = JSON.stringify(data);
-    //   await apiClient.post(`/bids/`, data).then((res) => {
-    //     console.log(res);
-    //   });
+      await apiClient.post(`/dj-rest-auth/registration/`, data).then((res) => {
+        console.log(res);
+      });
     },
   });
 
@@ -77,6 +81,17 @@ const SignUpForm = () => {
         className="password"
       />
       <div className="error">{formik.errors.password}</div>
+      <Form.Field
+        name="passwordConfirmation"
+        type="text"
+        id="form-input-control-password"
+        value={formik.values.password}
+        onChange={formik.handleChange}
+        control={Input}
+        placeholder="PASSWORD CONFIRMATION"
+        className="password"
+      />
+        <div className="error">{formik.errors.passwordConfirmation}</div>
       <div className="form-controls">
         <Button
           type="submit"
