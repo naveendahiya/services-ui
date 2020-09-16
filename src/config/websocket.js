@@ -15,8 +15,7 @@ class WebSocketService{
     }
 
     connect(task_url){
-        const path = task_url;
-        this.socketRef = new WebSocket(path);
+        this.socketRef = new WebSocket(task_url);
         this.socketRef.onopen = () => {
             console.log('websocket open');
         };
@@ -24,7 +23,7 @@ class WebSocketService{
             console.log(e.onmessage);
         }
         this.socketRef.onerror = e => {
-            console.log(e.messsage);
+            console.log(e.onerror);
         }
         this.socketRef.onclose = () => {
             console.log('websockets closed lets reopne');
@@ -35,7 +34,7 @@ class WebSocketService{
     socketNewMessage(data){
         const parsedData = JSON.parse(data);
         const command = parsedData.command;
-        if(object.keys(this.callbacks).length === 0){
+        if(Object.keys(this.callbacks).length === 0){
             return;
         }
         if(command === 'messages'){
@@ -46,16 +45,16 @@ class WebSocketService{
         }
     }
 
-    initChatUser(user_id) {
-        this.sendMessage({ command: 'init_chat', user_id: user_id });
+    initChatUser() {
+        this.sendMessage({ command: 'init_chat', user_id: parseInt(sessionStorage.getItem('user_id')) });
       }
     
-      fetchMessages(user_id) {
-        this.sendMessage({ command: 'fetch_messages', user_id: user_id });
+      fetchMessages() {
+        this.sendMessage({ command: 'fetch_messages', user_id: parseInt(sessionStorage.getItem('user_id')) });
       }
     
-      newChatMessage(message, user_id) {
-        this.sendMessage({ command: 'new_message', text: message.text, user_id: user_id }); 
+      newChatMessage(message) {
+        this.sendMessage({ command: 'new_message', text: message.text, user_id: parseInt(sessionStorage.getItem('user_id')) }); 
       }
     
       addCallbacks(messagesCallback, newMessageCallback) {

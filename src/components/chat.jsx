@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import './Chat.scss';
 
-import WebSocketInstance from '../../services/WebSocket'
+import WebSocketInstance from '../config/websocket';
 
 export default class Chat extends Component {
   constructor(props) {
@@ -9,9 +8,9 @@ export default class Chat extends Component {
     this.state = {}
 
     this.waitForSocketConnection(() => {
-      WebSocketInstance.initChatUser(this.props.currentUser);
+      WebSocketInstance.initChatUser();
       WebSocketInstance.addCallbacks(this.setMessages.bind(this), this.addMessage.bind(this))
-      WebSocketInstance.fetchMessages(this.props.currentUser);
+      WebSocketInstance.fetchMessages();
     });
   }
 

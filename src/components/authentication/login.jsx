@@ -4,6 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { Card, Icon, Image } from "semantic-ui-react";
 import LogInForm from './loginform';
+import { Link } from "react-router-dom";
 import "../../styles/login.scss";
 
 export default function LogIn() {
@@ -29,7 +30,11 @@ export default function LogIn() {
                 </div>
             </div>
             <div className="login-extra">
+            <Link to={{
+                pathname: `/signup/`,
+              }}>
               <div className="signup-button">Dont't Have an Account? SIGN UP</div>
+              </Link>
               <div className='forget-password'>FORGET PASSWORD</div>
             </div>
           </div>

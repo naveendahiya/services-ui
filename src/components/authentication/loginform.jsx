@@ -53,7 +53,6 @@ const LogInForm = () => {
           sessionStorage.setItem('username', res.data.username);
           sessionStorage.setItem('user_email', res.data.email); 
           sessionStorage.setItem('LoggedIn', 'true');
-
           history.push({
             pathname: `/app/`
         })

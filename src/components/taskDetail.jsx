@@ -15,6 +15,8 @@ import {
     useHistory
 } from "react-router-dom";
 import apiClient from "../config/apiclient";
+import WebSocketInstance from '../config/websocket';
+import Chat from '../components/chat';
 const { forwardRef, useRef } = React;
 
 
@@ -27,16 +29,17 @@ function TaskDetail(props) {
     let history = useHistory();
 
 
-    useEffect(() => {
+    useEffect(async() => {
+        WebSocketInstance.connect(`ws://localhost:8000/ws/chat/${id}/${sessionStorage.getItem('user_id')}`);
         if(props.task){
-            setTaskdata(props.location.task);
+           setTaskdata(props.location.task);
         }
 
         if(props.location.state){
-            setTaskdata(props.location.state.task);
+           setTaskdata(props.location.state.task);
         }
         if(taskdata.length === 0){
-            apiClient.get(`/tasks/${id}`)
+           await apiClient.get(`/tasks/${id}`)
                 .then(res => {
                     console.log(res.data);
                     setTaskdata(res.data);
@@ -46,7 +49,6 @@ function TaskDetail(props) {
             .then(res => {
                 setOffers(res.data);
             })
-
     }, []);
 
 
@@ -141,11 +143,14 @@ function TaskDetail(props) {
                            </div>
                        </div>
                        <Divider />
-                       <div className='outer detail-offer'>
+                       <div style={{display: taskdata.selected == null ? 'block' : 'none'}} className='outer detail-offer'>
                            <span>Offers</span>
                            <div className='detail-offer-list'>
                                {OfferList()}
                            </div>
+                       </div>
+                       <div className="outer">
+                             <Chat />
                        </div>
                    </div>
                 </Typography>

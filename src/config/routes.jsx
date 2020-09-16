@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import TaskForm from "../components/taskForm";
 import Home from '../components/home';
@@ -14,7 +14,13 @@ const ROUTES = [
     {
         path: "/app",
         key: "APP",
-        component: RenderRoutes,
+        component: props => {
+            if (!sessionStorage.getItem("token")) {
+              alert("You need to log in to access app routes");
+              return <Redirect to={"/"} />;
+            }
+            return <RenderRoutes {...props} />;
+          },
         routes: [
             {
                 path: "/app",

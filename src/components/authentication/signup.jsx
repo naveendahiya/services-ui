@@ -4,6 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { Card, Icon, Image } from "semantic-ui-react";
 import SignUpForm from './signupform';
+import { Link } from "react-router-dom";
 import "../../styles/signup.scss";
 
 export default function SignUp() {
@@ -28,7 +29,11 @@ export default function SignUp() {
                </div>
             </div>
             <div className="signup-extra">
+            <Link to={{
+                pathname: `/`,
+              }}>
               <div className="login-button">Have an Account? LOG IN</div>
+              </Link>
               <div className='forget-password'>FORGET PASSWORD</div>
             </div>
           </div>
