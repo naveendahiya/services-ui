@@ -17,6 +17,7 @@ import {
 import apiClient from "../config/apiclient";
 import WebSocketInstance from '../config/websocket';
 import Chat from '../components/chat';
+import { Dvr } from '@material-ui/icons';
 const { forwardRef, useRef } = React;
 
 
@@ -149,6 +150,7 @@ function TaskDetail(props) {
                                {OfferList()}
                            </div>
                        </div>
+                       <Divider />
                        <div className="outer">
                              <Chat />
                        </div>

@@ -20,7 +20,7 @@ class WebSocketService{
             console.log('websocket open');
         };
         this.socketRef.onmessage = e => {
-            console.log(e.onmessage);
+          this.socketNewMessage(e.data);
         }
         this.socketRef.onerror = e => {
             console.log(e.onerror);
@@ -33,6 +33,11 @@ class WebSocketService{
 
     socketNewMessage(data){
         const parsedData = JSON.parse(data);
+        console.log(data);
+        console.log(typeof(data));
+        console.log(typeof(parsedData));
+        console.log(parsedData);
+        console.log(parsedData.command);
         const command = parsedData.command;
         if(Object.keys(this.callbacks).length === 0){
             return;
@@ -41,20 +46,20 @@ class WebSocketService{
             this.callbacks[command](parsedData.messages);
         }
         if(command === 'new_message'){
-            this.callbacks[command](parsedData.messages);
+            this.callbacks[command](parsedData.message);
         }
     }
 
     initChatUser() {
-        this.sendMessage({ command: 'init_chat', user_id: parseInt(sessionStorage.getItem('user_id')) });
+        this.sendMessage({ command: 'init_chat', userid: parseInt(sessionStorage.getItem('user_id')) });
       }
     
       fetchMessages() {
-        this.sendMessage({ command: 'fetch_messages', user_id: parseInt(sessionStorage.getItem('user_id')) });
+        this.sendMessage({ command: 'fetch_messages', userid: parseInt(sessionStorage.getItem('user_id')) });
       }
     
       newChatMessage(message) {
-        this.sendMessage({ command: 'new_message', text: message.text, user_id: parseInt(sessionStorage.getItem('user_id')) }); 
+        this.sendMessage({ command: 'new_message', text: message.text, userid: parseInt(sessionStorage.getItem('user_id')) }); 
       }
     
       addCallbacks(messagesCallback, newMessageCallback) {

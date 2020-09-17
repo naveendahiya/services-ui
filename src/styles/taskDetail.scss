@@ -192,9 +192,127 @@
     @include flex-column;
     span{
       font-size: 20px;
-      margin-bottom: 10px;
-      font-family: 'Nunito Sans', sans-serif;
-      font-weight: 700;
+      @include sub-heading-1
     }
+  }
+}
+
+//scss for chat.jsx
+.chat-heading{
+   span{
+     font-size: 15px;
+     @include sub-heading-1
+   }
+}
+.input-card{
+  width: 100% !important;
+  height: fit-content !important;
+  border-bottom: 1px solid #2320CC !important;
+  .input-label{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  input{
+    border: none !important;
+    box-shadow: none !important;
+  }
+  textarea{
+    width: 100% !important;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+  }
+  .errors{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: red;
+  }
+  .extra{
+    width: 100%;
+    height: fit-content;
+    padding: 5px;
+    @include flex-row;
+    align-items: center;
+    justify-content: space-between;
+    button{
+      @include sub-heading-1;
+      font-size: 15px;
+      border: none;
+      background-color: white;
+      color: #2320CC;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+    .totalwords{
+      @include sub-heading-1;
+      font-size: 15px;
+      color: #2320cc;
+    }
+  }
+}
+
+.messages{
+  width: 100%;
+  height: fit-content;
+  padding: 10px;
+  margin-top: 10px;
+  .message{
+    width: 100%;
+    height: fit-content;
+    @include flex-row;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    .creater{
+       height: 40px;
+       width: 40px;
+       border-radius: 50%;
+       margin-left: 10px;
+       margin-right: 10px;
+       background-color: grey;
+       opacity: 0.5;
+    }
+    .text{
+      width: 80%;
+      height: fit-content;
+      background-color: #f6f8fd;
+      color: #545a77;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  }
+  .message-2{
+     width: 100%;
+     height: fit-content;
+     display: grid;
+     grid-template-rows: 1;
+     grid-template-columns: 5fr 1fr;
+     padding-top: 10px;
+     padding-bottom: 10px;
+     .creater{
+       grid-column: 2;
+       grid-row: 1;
+       height: 40px;
+       width: 40px;
+       border-radius: 50%;
+       margin-left: 10px;
+       margin-right: 5px;
+       background-color: grey;
+       opacity: 0.5;
+     }
+     .text{
+       grid-column: 1;
+       grid-row: 1;
+       width: 310px;
+       word-wrap: break-word;
+       height: fit-content;
+       text-align: left;
+       background-color: #545a77;
+       opacity: 0.8;
+       color: #f6f8fd;
+       padding: 10px;
+       border-radius: 5px;
+     }
   }
 }
