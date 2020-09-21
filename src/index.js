@@ -1,17 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { Provider } from 'react-redux'
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from "react-router-dom";
 import 'semantic-ui-css/semantic.min.css'
+import configureStore from './store/store';
 
+
+const store = configureStore();
 
 ReactDOM.render(
+  <Provider store={store}>
     <BrowserRouter>
   <React.StrictMode>
   <App />
   </React.StrictMode>
-    </BrowserRouter>,
+    </BrowserRouter>
+    </Provider>,
   document.getElementById('root')
 );
 

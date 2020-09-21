@@ -18,12 +18,14 @@ const BidCard = (props)  => {
                         </div>
                     </Card.Header>
                     <Card.Description>
-                        Hi, am in braybrook. Can pickup any time of your preference and deliver straight away. Am highly rated rude share driver. Can do this at your convenience.
+                      {props.offer.comment}
                     </Card.Description>
                     <Divider />
                     <Button
+                        style={{display: props.taskuser == parseInt(sessionStorage.getItem('user_id')) ? 'block' : 'none'}}
                         content="Accept"
                         labelPosition='right'
+                        onClick = {() => props.accept()}
                         icon='checkmark'
                         positive
                         className='accept-button'

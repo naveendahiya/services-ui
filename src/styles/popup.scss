@@ -1,0 +1,14 @@
+@import './mixins';
+
+.isa{
+    @include flex-row-center;
+    width: 100%;
+    height: fit-content;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.isa_error{
+    color: #D8000C;
+    background-color: #FFD2D2;
+}

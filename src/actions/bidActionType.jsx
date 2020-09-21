@@ -1,0 +1,8 @@
+export const GET_TASK_BIDS = 'GET_TASK_BIDS';
+export const GET_TASK_BIDS_PENDING = 'GET_TASK_BIDS_PENDING';
+
+export const CREATE_BID = 'CREATE_BID';
+export const CREATE_BID_PENDING = 'CREATE_BID_PENDING';
+
+export const BID_API_ERROR = 'BID_API_ERROR';
+

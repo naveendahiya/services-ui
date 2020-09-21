@@ -37,13 +37,10 @@ export default class Chat extends Component {
   }
 
   addMessage(message) {
-    console.log('hello');
-    console.log(message);
     this.setState({ messages: [ message , ...this.state.messages ] });
   }
 
   setMessages(messages) {
-    console.log(messages);
     this.setState({ messages: messages.reverse() });
   }
 

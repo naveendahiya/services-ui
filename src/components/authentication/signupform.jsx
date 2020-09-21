@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Button,
   Form,
@@ -6,10 +6,17 @@ import {
 } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import axios from 'axios';
 import apiClient from "../../config/apiclient";
 import "../../styles/signupform.scss";
+import Error from '../popup';
+import { useHistory } from "react-router-dom";
+
 
 const SignUpForm = () => {
+  let history = useHistory();
+  const [open, setOpen] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -26,7 +33,6 @@ const SignUpForm = () => {
         email: Yup.string().email()
             .required('Required'),
         password: Yup.string()
-            .min('Please enter a password of atleast 8 characters')
             .required('Required'),
         passwordConfirmation: Yup.string()
             .required('Required'),
@@ -42,13 +48,41 @@ const SignUpForm = () => {
         password2: formik.values.passwordConfirmation,
       };
       data = JSON.stringify(data);
-      await apiClient.post(`/dj-rest-auth/registration/`, data).then((res) => {
-        console.log(res);
-      });
+      await axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/dj-rest-auth/registration/',
+        data: data,
+        headers: { "Content-type": "application/json; charset=UTF-8", }
+        })
+        .then(function (res) {
+          console.log(res);
+          sessionStorage.setItem("token", res.data.key);
+        })
+        .catch(function (res) {
+            console.log(res);
+            setOpen(true);
+            setInterval(() => {
+              setOpen(false);
+            }, 10000);
+        });
+        await apiClient.get("/dj-rest-auth/user/").then((res) => {
+          if (res.status == 200) {
+            sessionStorage.setItem("user_id", res.data.pk);
+            sessionStorage.setItem("username", res.data.username);
+            sessionStorage.setItem("user_email", res.data.email);
+            sessionStorage.setItem("LoggedIn", "true");
+            history.push({
+              pathname: `/app/`,
+            });
+          }
+        });
     },
   });
 
+  const error = 'Something went wrong!!'
   return (
+    <>
+    {open == false ? '' : <Error error={error} />}
     <form className="signup-form" onSubmit={formik.handleSubmit}>
       <Form.Field
         name="username"
@@ -85,7 +119,7 @@ const SignUpForm = () => {
         name="passwordConfirmation"
         type="text"
         id="form-input-control-password"
-        value={formik.values.password}
+        value={formik.values.passwordConfirmation}
         onChange={formik.handleChange}
         control={Input}
         placeholder="PASSWORD CONFIRMATION"
@@ -94,6 +128,7 @@ const SignUpForm = () => {
         <div className="error">{formik.errors.passwordConfirmation}</div>
       <div className="form-controls">
         <Button
+          name='submit'
           type="submit"
           content="CREATE ACCOUNT"
           positive
@@ -101,6 +136,7 @@ const SignUpForm = () => {
         />
       </div>
     </form>
+    </>
   );
 };
 

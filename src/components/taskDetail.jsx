@@ -17,6 +17,7 @@ import {
 import apiClient from "../config/apiclient";
 import WebSocketInstance from '../config/websocket';
 import Chat from '../components/chat';
+import moment from 'moment';
 import { Dvr } from '@material-ui/icons';
 const { forwardRef, useRef } = React;
 
@@ -53,11 +54,22 @@ function TaskDetail(props) {
     }, []);
 
 
+    const offerSelect = (id) => {
+       let data = {
+          selected: id 
+       }
+       apiClient.patch(`tasks/${id}/`, data)
+           .then(res => {
+              console.log(res);
+           }) 
+    }
+
+
     const OfferList = () => {
         let products = [];
         if(offers.length > 0){
             products = offers.map((offer) =>
-                <BidCard offer={offer} />
+                <BidCard offer={offer} taskuser={taskdata.creater} accept={() => offerSelect(offer.id)} />
             )
         }else{
            products = <h3>No Offers Yet For This Task.</h3>
@@ -87,10 +99,10 @@ function TaskDetail(props) {
                            </div>
                            <div className='detail-user-name'>
                                <spam className='detail-user-heading' >POSTED BY</spam><br></br>
-                               <span className='detail-user-value' >Tom T.</span>
+    <span className='detail-user-value' >{taskdata.creatername}</span>
                            </div>
                            <div className='detail-user-time'>
-                               2 hours ago
+                           {moment(taskdata.due_date).fromNow()}
                            </div>
                        </div>
                        <Divider />
@@ -144,7 +156,7 @@ function TaskDetail(props) {
                            </div>
                        </div>
                        <Divider />
-                       <div style={{display: taskdata.selected == null ? 'block' : 'none'}} className='outer detail-offer'>
+                       <div style={{display: taskdata.selected == -1 ? 'block' : 'none'}} className='outer detail-offer'>
                            <span>Offers</span>
                            <div className='detail-offer-list'>
                                {OfferList()}
@@ -152,7 +164,7 @@ function TaskDetail(props) {
                        </div>
                        <Divider />
                        <div className="outer">
-                             <Chat />
+                             {taskdata.selected == -1 ? "" : <Chat />}
                        </div>
                    </div>
                 </Typography>
