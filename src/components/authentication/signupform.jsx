@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState,  useEffect} from "react";
 import {
   Button,
   Form,
@@ -6,16 +6,36 @@ import {
 } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import axios from 'axios';
-import apiClient from "../../config/apiclient";
 import "../../styles/signupform.scss";
-import Error from '../popup';
 import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import {signup, getUser,signupState, toastSuccess, setError,toastError, emptyError} from '../../actions/userAction';
+import axios from "axios";
+import {SIGNUP_URL} from '../../config/url';
 
 
 const SignUpForm = () => {
+  const dispatch = useDispatch();
   let history = useHistory();
-  const [open, setOpen] = useState(false);
+  let error = useSelector(state => state.userReducer.error);
+  let key = useSelector(state => state.userReducer.key);
+  let isAuth = useSelector((state) => state.userReducer.isAuth);
+
+
+  useEffect(() => {
+    localStorage.removeItem('token');
+
+    if(isAuth == true){
+      dispatch(
+        getUser()
+      )
+
+      history.push({
+        pathname: `/app/`,
+      });
+    }
+  }, [isAuth]);
+
 
   const formik = useFormik({
     initialValues: {
@@ -48,41 +68,46 @@ const SignUpForm = () => {
         password2: formik.values.passwordConfirmation,
       };
       data = JSON.stringify(data);
+      localStorage.removeItem('token');
+
       await axios({
         method: 'post',
-        url: 'http://127.0.0.1:8000/dj-rest-auth/registration/',
+        url: SIGNUP_URL,
         data: data,
-        headers: { "Content-type": "application/json; charset=UTF-8", }
+        headers: { "Content-type": "application/json; charset=UTF-8" },
+      })
+        .then(response => {
+            dispatch(
+              signupState(false)
+            );
+            const data = response.data;
+            localStorage.setItem('token', data.key);
+            dispatch(
+              signup(data.key)
+            );
+            dispatch(
+              toastSuccess('ACCOUNT CREATED')
+            );
         })
-        .then(function (res) {
-          console.log(res);
-          sessionStorage.setItem("token", res.data.key);
+        .catch(error => {
+          console.log(error.response.data)
+          dispatch(
+            signupState(false)
+          );  
+          dispatch(
+            setError(error.response.data)
+          );
+          setInterval(() => {
+            dispatch(
+              emptyError()
+            );
+          }, 5000);
         })
-        .catch(function (res) {
-            console.log(res);
-            setOpen(true);
-            setInterval(() => {
-              setOpen(false);
-            }, 10000);
-        });
-        await apiClient.get("/dj-rest-auth/user/").then((res) => {
-          if (res.status == 200) {
-            sessionStorage.setItem("user_id", res.data.pk);
-            sessionStorage.setItem("username", res.data.username);
-            sessionStorage.setItem("user_email", res.data.email);
-            sessionStorage.setItem("LoggedIn", "true");
-            history.push({
-              pathname: `/app/`,
-            });
-          }
-        });
     },
   });
 
-  const error = 'Something went wrong!!'
   return (
     <>
-    {open == false ? '' : <Error error={error} />}
     <form className="signup-form" onSubmit={formik.handleSubmit}>
       <Form.Field
         name="username"
@@ -93,6 +118,7 @@ const SignUpForm = () => {
         placeholder="Username"
         className="username"
       />
+      <div className="error">{error.username != undefined ? error.username : ''}</div>
       <div className="error">{formik.errors.username}</div>
       <Form.Field
         name="email"
@@ -103,6 +129,7 @@ const SignUpForm = () => {
         placeholder="Email"
         className="email"
       />
+      <div className="error">{error.email != undefined ? error.email : ''}</div>
       <div className="error">{formik.errors.email}</div>
       <Form.Field
         name="password"
@@ -114,6 +141,7 @@ const SignUpForm = () => {
         placeholder="PASSWORD"
         className="password"
       />
+      <div className="error">{error.password1 != undefined ? error.password1.join(', ') : ''}</div>
       <div className="error">{formik.errors.password}</div>
       <Form.Field
         name="passwordConfirmation"

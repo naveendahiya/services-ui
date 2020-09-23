@@ -1,17 +1,32 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Form, Input } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import apiClient from "../../config/apiclient";
-import axios from "axios";
 import "../../styles/loginform.scss";
 import { useHistory } from "react-router-dom";
-import Error from '../popup';
+import { useDispatch, useSelector } from "react-redux";
+import { login, getUser, loginState, toastError, toastSuccess } from "../../actions/userAction";
+import {LOGIN_URL} from '../../config/url';
+import axios from "axios";
 
 
 const LogInForm = () => {
+  const dispatch = useDispatch();
   let history = useHistory();
-  let [open , setOpen] = useState(false);
+  let isAuth = useSelector((state) => state.userReducer.isAuth);
+
+  useEffect(() => {
+    if(isAuth == true){
+      dispatch(
+        getUser()
+      )
+
+      history.push({
+        pathname: `/app/`,
+      });
+    }
+  }, [isAuth]);
+
 
   const formik = useFormik({
     initialValues: {
@@ -26,50 +41,47 @@ const LogInForm = () => {
       password: Yup.string().required("Required"),
     }),
 
-    onSubmit: async (values) => {
-      alert(JSON.stringify(values, null, 2));
-
+    onSubmit: async(values) => {
       let data = {
         username: formik.values.username,
         email: formik.values.email,
         password: formik.values.password,
       };
       data = JSON.stringify(data);
+      localStorage.removeItem("token");
+
       await axios({
-        method: "post",
-        url: "http://127.0.0.1:8000/dj-rest-auth/login/",
+        method: 'post',
+        url: LOGIN_URL,
         data: data,
         headers: { "Content-type": "application/json; charset=UTF-8" },
       })
-        .then(function (res) {
-          console.log(res);
-          sessionStorage.setItem("token", res.data.key);
+        .then(response => {
+            dispatch(
+              loginState(false)
+            );
+            const data = response.data;
+            localStorage.setItem('token', data.key);
+            dispatch(
+              login(data.key)
+            );
+            dispatch(
+              toastSuccess('WELCOME BACK!')
+            );
         })
-        .catch(function (res) {
-          console.log(res);
-          setOpen(true);
-          setInterval(() => {
-            setOpen(false);
-          }, 8000);
-        });
-      await apiClient.get("/dj-rest-auth/user/").then((res) => {
-        if (res.status == 200) {
-          sessionStorage.setItem("user_id", res.data.pk);
-          sessionStorage.setItem("username", res.data.username);
-          sessionStorage.setItem("user_email", res.data.email);
-          sessionStorage.setItem("LoggedIn", "true");
-          history.push({
-            pathname: `/app/`,
-          });
-        }
-      });
+        .catch(error => {
+            dispatch(
+              loginState(false)
+            );
+            dispatch(
+              toastError('Invalid Credentials')
+            );
+        })
     },
   });
 
-  const error = 'Please check your credential'
   return (
     <>
-    {open == false ? '' :  <Error error={error} />}
       <form className="login-form" onSubmit={formik.handleSubmit}>
         <Form.Field
           name="username"

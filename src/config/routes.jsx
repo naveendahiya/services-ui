@@ -9,14 +9,14 @@ import SignUp from '../components/authentication/signup';
 import LogIn from '../components/authentication/login';
 
 const ROUTES = [
-    { path: "/", key: "ROOT", exact: true, component: LogIn },
+    {path: "/", key: "ROOT", exact: true, component: LogIn },
     {path: '/signup', key: "ROOT_SIGNUP", exact: true, component: SignUp},
     {
         path: "/app",
         key: "APP",
         component: props => {
-            if (!sessionStorage.getItem("token")) {
-              alert("You need to log in to access app routes");
+            if (!localStorage.getItem("token")) {
+                alert('you cannot acccess these routes');
               return <Redirect to={"/"} />;
             }
             return <RenderRoutes {...props} />;

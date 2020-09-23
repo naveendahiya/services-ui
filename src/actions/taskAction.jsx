@@ -48,7 +48,7 @@ export const getTask = (id, params) => {
 
 
 export const getAllTasks = params => {
-    let apiUrl = ''/tasks/'';
+    let apiUrl = '/tasks/';
 
     return dispatch => {
         dispatch(apiDispatch(GET_TASK_ALL_PENDING, true));

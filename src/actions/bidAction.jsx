@@ -24,7 +24,7 @@ const apiError = error => {
 }
 
 export const getTaskBid = (id, params) => {
-    let apiUrl = ''
+    let apiUrl = `/bids/?task=${id}`;
 
     return dispatch => {
         dispatch(apiDispatch(GET_TASK_BIDS_PENDING, true));

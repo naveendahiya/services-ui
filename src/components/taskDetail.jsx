@@ -16,41 +16,31 @@ import {
 } from "react-router-dom";
 import apiClient from "../config/apiclient";
 import WebSocketInstance from '../config/websocket';
-import Chat from '../components/chat';
+import Chat from '../components/chat'
 import moment from 'moment';
-import { Dvr } from '@material-ui/icons';
+import { useDispatch, useSelector } from 'react-redux';
+import {getTask} from '../actions/taskAction';
+import {getTaskBid} from '../actions/bidAction';
 const { forwardRef, useRef } = React;
 
 
 
 function TaskDetail(props) {
 
-    const [taskdata, setTaskdata] = useState([]);
-    const [offers, setOffers] = useState([]);
+    const taskdata = useSelector(state => state.taskReducer.selectedTask);
+    const offers = useSelector(state => state.bidReducer.bids);
     let { id } = useParams();
+    const dispatch = useDispatch()
     let history = useHistory();
 
-
-    useEffect(async() => {
+    useEffect(() => {
         WebSocketInstance.connect(`ws://localhost:8000/ws/chat/${id}/${sessionStorage.getItem('user_id')}`);
-        if(props.task){
-           setTaskdata(props.location.task);
-        }
-
-        if(props.location.state){
-           setTaskdata(props.location.state.task);
-        }
-        if(taskdata.length === 0){
-           await apiClient.get(`/tasks/${id}`)
-                .then(res => {
-                    console.log(res.data);
-                    setTaskdata(res.data);
-                })
-        }
-        apiClient.get(`/bids/?task=${id}`)
-            .then(res => {
-                setOffers(res.data);
-            })
+        dispatch(
+            getTask(id)
+        )
+        dispatch(
+            getTaskBid(id)
+        )
     }, []);
 
 

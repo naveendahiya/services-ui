@@ -34,8 +34,6 @@ export default function bidReducer(
             return {...state, addedBid: payload};
         case BID_API_ERROR:
             return {...state, error: payload};
-        case RESET_BID_REDUCER:
-            return initialState;
         default:
             return state;
     }

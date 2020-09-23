@@ -11,6 +11,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import { useDispatch, useSelector } from 'react-redux';
 import '../styles/header.scss';
 
 const useStyles = makeStyles((theme) => ({
@@ -80,6 +81,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Header() {
+  const isAuth = useSelector(state => state.userReducer.isAuth);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -144,7 +146,7 @@ export default function Header() {
     </Menu>
   );
   
-  if(sessionStorage.getItem('LoggedIn') == 'true'){
+  if(isAuth == true || localStorage.getItem("token")){
     return (
       <div className={classes.grow}>
         <AppBar position="fixed" color={'white'} className='header-main'  elevation={0} >

@@ -56,8 +56,6 @@ export default function taskReducer(
                 ...state,
                 error: error,
             };
-        case RESET_TASK_REDUCER:
-            return initialState;
         default:
             return state;
     }

@@ -1,0 +1,18 @@
+export const LOGIN = 'LOGIN';
+export const LOGIN_PENDING = 'LOGIN_PENDING';
+
+export const GET_USER = 'GET_USER';
+export const GET_USER_PENDING = 'GET_USER_PENDING';
+
+export const FORGOT_PASSWORD = 'FORGOT_PASSWORD';
+export const FORGOT_PASSWORD_PENDING = 'FORGOT_PASSWORD_PENDING';
+
+export const COMPLETE_SIGNUP = 'COMPLETE_SIGNUP';
+export const COMPLETE_SIGNUP_PENDING = 'COMPLETE_SIGNUP_PENDING';
+
+export const LOGIN_CHECK = 'LOGIN_CHECK';
+
+export const USER_API_ERROR = 'USER_API_ERROR';
+
+export const LOGOUT = 'LOGOUT';
+
