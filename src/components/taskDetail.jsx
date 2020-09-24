@@ -26,11 +26,10 @@ const { forwardRef, useRef } = React;
 
 
 function TaskDetail(props) {
-
     const taskdata = useSelector(state => state.taskReducer.selectedTask);
-    const offers = useSelector(state => state.bidReducer.bids);
+    const offers =  useSelector(state => state.bidReducer.bids);
     let { id } = useParams();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     let history = useHistory();
 
     useEffect(() => {
@@ -51,7 +50,7 @@ function TaskDetail(props) {
        apiClient.patch(`tasks/${id}/`, data)
            .then(res => {
               console.log(res);
-           }) 
+        }) 
     }
 
 

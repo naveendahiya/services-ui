@@ -14,3 +14,7 @@ export const UPDATE_TASK = 'UPDATE_TASK';
 export const UPDATE_TASK_PENDING = 'UPDATE_TASK_PENDING';
 
 export const TASK_API_ERROR = 'TASK_API_ERROR';
+
+export const ADD_TASKS = 'ADD_TASKS';
+
+export const SET_COUNT = 'SET_COUNT';

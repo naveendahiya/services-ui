@@ -1,4 +1,5 @@
 import apiClient from '../config/apiclient';
+import { PAGINATION_LOADING } from './paginationActionType';
 
 import {
     GET_TASK,
@@ -12,6 +13,8 @@ import {
     CREATE_TASK,
     CREATE_TASK_PENDING,
     TASK_API_ERROR,
+    ADD_TASKS,
+    SET_COUNT
 } from './taskActionType';
 
 const apiDispatch = (actionType = '', data) => {
@@ -47,8 +50,8 @@ export const getTask = (id, params) => {
 }
 
 
-export const getAllTasks = params => {
-    let apiUrl = '/tasks/';
+export const getAllTasks = (pageno) => {
+    let apiUrl = `/tasks/?page=${pageno}`;
 
     return dispatch => {
         dispatch(apiDispatch(GET_TASK_ALL_PENDING, true));
@@ -57,7 +60,8 @@ export const getAllTasks = params => {
           .get(apiUrl)
           .then(res => {
              dispatch(apiDispatch(GET_TASK_ALL_PENDING, false));
-             dispatch(apiDispatch(GET_TASK_ALL, res.data));
+             dispatch(apiDispatch(GET_TASK_ALL, res.data.results));
+             dispatch(apiDispatch(SET_COUNT, res.data.count))
           })
           .catch(error => {
             dispatch(apiError(TASK_API_ERROR, error));
@@ -65,6 +69,23 @@ export const getAllTasks = params => {
     }
 }
 
+
+
+export const addTasks = (pageno) => {
+    let apiUrl = `/tasks/?page=${pageno}`;
+
+    return dispatch => {
+        apiClient
+          .get(apiUrl)
+          .then(res => {
+             dispatch(apiDispatch(ADD_TASKS, res.data.results));
+             dispatch(apiDispatch(PAGINATION_LOADING, true))
+          })
+          .catch(error => {
+            dispatch(apiError(TASK_API_ERROR, error));
+          })
+    }
+}
 
 export const createTask = taskObj => {
     const apiUrl = '';

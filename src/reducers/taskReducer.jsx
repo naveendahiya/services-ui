@@ -10,6 +10,8 @@ import {
     UPDATE_TASK,
     UPDATE_TASK_PENDING,
     TASK_API_ERROR, 
+    ADD_TASKS,
+    SET_COUNT
 } from '../actions/taskActionType';
 
 const initialPendingState = {
@@ -25,7 +27,8 @@ const initialState = {
     tasks: [],
     error: null,
     addedTask: null,
-    selectedTask: null, 
+    selectedTask: [], 
+    count: 0,
 }
 
 export default function taskReducer(
@@ -40,9 +43,18 @@ export default function taskReducer(
         case GET_TASK_PENDING:
             return {...state, getTaskPending: payload, addedTask: null};
         case GET_TASK_ALL:
-            return {...state, tasks: payload};
+            return {...state, tasks: payload };
+        case SET_COUNT:
+            return {...state, count: payload};
         case GET_TASK_ALL_PENDING:
             return {...state, getAllTaskPending: payload};
+        case ADD_TASKS:
+            return {...state,
+             tasks: [
+               ...state.tasks,
+               ...payload
+             ]
+    }
         case CREATE_TASK_PENDING:
             return {...state, createTaskPending: payload};
         case UPDATE_TASK_PENDING:

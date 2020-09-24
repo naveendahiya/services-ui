@@ -1,3 +1,5 @@
+@import './mixins';
+
 .Toastify__toast{
     height: 47px !important; 
     max-height: 100px !important;
@@ -6,4 +8,26 @@
     
 .Toastify__close-button{
    display: none !important;
+}
+
+
+.pagination-loading{
+    @include flex-row-center;
+    width: 100%;
+    height: fit-content;
+    background-color: white;
+    color: darkblue;
+    border-radius: 3px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 700;
+    font-size: 20px;
+}
+
+.pagination-end{
+    @include flex-row-center;
+    width: 100%;
+    height: fit-content;
+    background-color: #D5C6B6;
+    color: white;
+    border-radius: 3px;
 }
