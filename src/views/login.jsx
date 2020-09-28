@@ -1,14 +1,26 @@
-import React from "react";
+import React, {useEffect} from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
-import { Card, Icon, Image } from "semantic-ui-react";
-import LogInForm from './loginform';
+import LogInForm from '../components/forms/loginform';
 import { Link } from "react-router-dom";
-import "../../styles/login.scss";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import "../styles/login.scss";
 
 export default function LogIn() {
-  sessionStorage.setItem('LoggedIn', 'false');
+   const isAuth = useSelector(state => state.userReducer.isAuth)
+   let history = useHistory();
+
+  useEffect(() => {
+     if(isAuth == true){
+      history.push({
+        pathname: `/app/`,
+      });
+     }
+  }, [isAuth])
+
+
   return (
     <React.Fragment>
       <CssBaseline />

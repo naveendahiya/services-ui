@@ -1,10 +1,10 @@
 import React from 'react';
 import { Card, Icon } from 'semantic-ui-react'
-import '../styles/taskcard.scss';
+import '../../styles/taskcard.scss';
 
-import calendar from '../images/calendar.svg';
-import profile from '../images/user.svg';
-import location from '../images/location.svg';
+import calendar from '../../images/calendar.svg';
+import profile from '../../images/user.svg';
+import location from '../../images/location.svg';
 import { Link } from "react-router-dom";
 
 

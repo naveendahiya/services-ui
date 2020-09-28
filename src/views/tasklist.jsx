@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
-import TaskCard from "./taskcard";
+import TaskCard from "../components/cards/taskcard";
 import { useDispatch, useSelector } from "react-redux";
 import {getAllTasks,  addTasks} from '../actions/taskAction';
 import {setLoading, setPage} from '../actions/paginationAction';
@@ -17,7 +17,9 @@ const Tasks = () => {
   const [more, setMore] = useState(true);
   const dispatch = useDispatch();
 
+  if(window.location.pathname == '/app/tasks'){
   window.onscroll = debounce(() => {
+    console.log(window.location.href)
     let height = document.getElementById('tasks-container').clientHeight;
     if (!loading || !more) {
         return;
@@ -35,7 +37,7 @@ const Tasks = () => {
       )
     }
   }, 100);
-
+  }
 
   useEffect(() => {
     dispatch(

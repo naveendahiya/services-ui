@@ -5,17 +5,38 @@ import * as Yup from "yup";
 import "../../styles/loginform.scss";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { login, getUser, loginState, toastError, toastSuccess } from "../../actions/userAction";
+import { login, getUser, loginState, toastError, toastSuccess, setToken, setError } from "../../actions/userAction";
 import {LOGIN_URL} from '../../config/url';
 import axios from "axios";
+import { useCookies } from 'react-cookie';
 
 
 const LogInForm = () => {
   const dispatch = useDispatch();
   let history = useHistory();
   let isAuth = useSelector((state) => state.userReducer.isAuth);
+  const [cookies, setCookie] = useCookies(['token']);
+
 
   useEffect(() => {
+
+    if(cookies.token != undefined){
+      localStorage.setItem('token', cookies.token)
+      dispatch(
+        setToken(cookies.token)
+      )
+
+      dispatch(
+        getUser()
+      )
+
+      history.push({
+        pathname: `/app/`,
+      });
+    }else{
+      localStorage.removeItem('token');
+    }
+
     if(isAuth == true){
       dispatch(
         getUser()
@@ -61,7 +82,8 @@ const LogInForm = () => {
               loginState(false)
             );
             const data = response.data;
-            localStorage.setItem('token', data.key);
+            localStorage.setItem('token', cookies.token)
+            setCookie('token', data.key);
             dispatch(
               login(data.key)
             );

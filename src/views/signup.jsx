@@ -2,10 +2,9 @@ import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
-import { Card, Icon, Image } from "semantic-ui-react";
-import SignUpForm from './signupform';
+import SignUpForm from '../components/forms/signupform';
 import { Link } from "react-router-dom";
-import "../../styles/signup.scss";
+import "../styles/signup.scss";
 
 export default function SignUp() {
   return (

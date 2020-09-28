@@ -7,11 +7,13 @@ import { BrowserRouter } from "react-router-dom";
 import 'semantic-ui-css/semantic.min.css'
 import configureStore from './store/store';
 import { ToastContainer, toast } from 'react-toastify';
+import { CookiesProvider } from 'react-cookie';
 import './styles/index.scss';
 
 const store = configureStore();
 
 ReactDOM.render(
+  <CookiesProvider>
   <Provider store={store}>
     <BrowserRouter>
   <React.StrictMode>
@@ -19,7 +21,8 @@ ReactDOM.render(
   <App />
   </React.StrictMode>
     </BrowserRouter>
-    </Provider>,
+    </Provider>
+    </CookiesProvider>,
   document.getElementById('root')
 );
 

@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import '../styles/taskForm.scss';
+import '../../styles/taskForm.scss';
 import {
     Button, Card,
     Checkbox,
@@ -14,7 +14,7 @@ import {
     TextArea,
 } from 'semantic-ui-react';
 import * as Yup from 'yup';
-import apiClient from "../config/apiclient";
+import apiClient from "../../config/apiclient";
 import {
     useHistory
 } from "react-router-dom";

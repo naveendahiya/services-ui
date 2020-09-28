@@ -1,9 +1,9 @@
 import React from 'react'
 import {Button, Card, Modal, Form, TextArea, Input, Checkbox} from 'semantic-ui-react';
-import '../styles/bidForm.scss';
+import '../../styles/bidForm.scss';
 import { useFormik } from "formik";
 import * as Yup from 'yup';
-import apiClient from "../config/apiclient";
+import apiClient from "../../config/apiclient";
 
 const { forwardRef,  useImperativeHandle } = React;
 

@@ -1,12 +1,16 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
-import TaskForm from "../components/taskForm";
-import Home from '../components/home';
-import Tasks from "../components/tasklist";
-import TaskDetail from "../components/taskDetail";
-import SignUp from '../components/authentication/signup';
-import LogIn from '../components/authentication/login';
+import configureStore from '../store/store';
+
+import TaskForm from "../components/forms/taskForm";
+import Home from '../views/home';
+import Tasks from "../views/tasklist";
+import TaskDetail from "../views/taskDetail";
+import SignUp from '../views/signup';
+import LogIn from '../views/login';
+
+
 
 const ROUTES = [
     {path: "/", key: "ROOT", exact: true, component: LogIn },
@@ -15,8 +19,7 @@ const ROUTES = [
         path: "/app",
         key: "APP",
         component: props => {
-            if (!localStorage.getItem("token")) {
-                alert('you cannot acccess these routes');
+            if (!localStorage.getItem('token')){
               return <Redirect to={"/"} />;
             }
             return <RenderRoutes {...props} />;

@@ -10,8 +10,8 @@ import{
     LOGOUT,
     COMPLETE_SIGNUP_PENDING,
     COMPLETE_SIGNUP,
+    SET_TOKEN,
 } from './userActionType';
-import axios from "axios";
 import apiClient from '../config/apiclient';
 
 
@@ -19,7 +19,6 @@ import{
   TOAST_ERROR,
   TOAST_SUCCESS,
 } from './toastActionType';
-import { setIn } from 'formik';
 
 //urls 
 
@@ -45,6 +44,12 @@ export const login = (data) => {
   }
 }
 
+export const setToken = (data) => {
+  return dispatch => {
+    dispatch(apiDispatch(SET_TOKEN, data));
+  }
+} 
+
 export const toastError = (msg) => {
   return dispatch => {
     dispatch(apiDispatch(TOAST_ERROR, msg));
@@ -66,6 +71,7 @@ export const getUser = () => {
       .then(res => {
         dispatch(apiDispatch(GET_USER_PENDING, false));
         dispatch(apiDispatch(GET_USER, res.data));
+        sessionStorage.setItem('user_id', res.data.pk);
       })
       .catch(error => {
         dispatch(apiDispatch(GET_USER_PENDING, false));

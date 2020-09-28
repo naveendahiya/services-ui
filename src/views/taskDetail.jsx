@@ -7,8 +7,8 @@ import location from '../images/location.svg';
 import calendar from '../images/calendar.svg';
 import '../styles/taskDetail.scss';
 import {Button, Card, Divider, Label} from 'semantic-ui-react'
-import BidCard from "./bidCard";
-import BidForm from "./bidForm";
+import BidCard from "../components/cards/bidCard";
+import BidForm from "../components/forms/bidForm";
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import {
     useParams,
@@ -28,12 +28,17 @@ const { forwardRef, useRef } = React;
 function TaskDetail(props) {
     const taskdata = useSelector(state => state.taskReducer.selectedTask);
     const offers =  useSelector(state => state.bidReducer.bids);
+    let user_id = useSelector(state => state.userReducer.user.pk)
     let { id } = useParams();
     const dispatch = useDispatch();
     let history = useHistory();
 
+    if(user_id == undefined){
+        user_id = localStorage.getItem('user_id');
+    }
+
     useEffect(() => {
-        WebSocketInstance.connect(`ws://localhost:8000/ws/chat/${id}/${sessionStorage.getItem('user_id')}`);
+        WebSocketInstance.connect(`ws://localhost:8000/ws/chat/${id}/${user_id}`);
         dispatch(
             getTask(id)
         )

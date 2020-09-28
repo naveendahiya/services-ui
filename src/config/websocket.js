@@ -51,15 +51,15 @@ class WebSocketService{
     }
 
     initChatUser() {
-        this.sendMessage({ command: 'init_chat', userid: parseInt(sessionStorage.getItem('user_id')) });
+        this.sendMessage({ command: 'init_chat', userid: parseInt(localStorage.getItem('user_id')) });
       }
     
       fetchMessages() {
-        this.sendMessage({ command: 'fetch_messages', userid: parseInt(sessionStorage.getItem('user_id')) });
+        this.sendMessage({ command: 'fetch_messages', userid: parseInt(localStorage.getItem('user_id')) });
       }
     
       newChatMessage(message) {
-        this.sendMessage({ command: 'new_message', text: message.text, userid: parseInt(sessionStorage.getItem('user_id')) }); 
+        this.sendMessage({ command: 'new_message', text: message.text, userid: parseInt(localStorage.getItem('user_id')) }); 
       }
     
       addCallbacks(messagesCallback, newMessageCallback) {

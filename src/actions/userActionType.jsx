@@ -16,3 +16,4 @@ export const USER_API_ERROR = 'USER_API_ERROR';
 
 export const LOGOUT = 'LOGOUT';
 
+export const SET_TOKEN = 'SET_TOKEN';
