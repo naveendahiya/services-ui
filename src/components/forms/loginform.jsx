@@ -8,22 +8,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, getUser, loginState, toastError, toastSuccess, setToken, setError } from "../../actions/userAction";
 import {LOGIN_URL} from '../../config/url';
 import axios from "axios";
-import { useCookies } from 'react-cookie';
+import Cookies from 'js-cookie';
+
 
 
 const LogInForm = () => {
   const dispatch = useDispatch();
   let history = useHistory();
   let isAuth = useSelector((state) => state.userReducer.isAuth);
-  const [cookies, setCookie] = useCookies(['token']);
 
 
-  useEffect(() => {
-
-    if(cookies.token != undefined){
-      localStorage.setItem('token', cookies.token)
+  useEffect(()=>{
+    if(Cookies.get('token') != undefined){
+      localStorage.setItem('token', Cookies.get('token'))
       dispatch(
-        setToken(cookies.token)
+        setToken(Cookies.get('token'))
       )
 
       dispatch(
@@ -37,6 +36,9 @@ const LogInForm = () => {
       localStorage.removeItem('token');
     }
 
+  }, [])
+
+  useEffect(() => {
     if(isAuth == true){
       dispatch(
         getUser()
@@ -82,8 +84,8 @@ const LogInForm = () => {
               loginState(false)
             );
             const data = response.data;
-            localStorage.setItem('token', cookies.token)
-            setCookie('token', data.key);
+            localStorage.setItem('token', data.key)
+            Cookies.set('token', data.key, { expires: 7, path: '/' })
             dispatch(
               login(data.key)
             );

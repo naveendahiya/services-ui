@@ -10,6 +10,7 @@ import {
     COMPLETE_SIGNUP_PENDING,
     USER_API_ERROR,
     SET_TOKEN,
+    LOGOUT,
 } from '../actions/userActionType';
 
 const initialPendingState = {
@@ -50,6 +51,8 @@ export default function userReducer(
             return {...state, error: payload};
         case SET_TOKEN:
             return {...state, key: payload, isAuth: true};
+        case LOGOUT:
+            return {...state, key: '', isAuth: false};
         default:
             return state;
     }

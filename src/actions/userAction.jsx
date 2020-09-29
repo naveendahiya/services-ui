@@ -50,6 +50,12 @@ export const setToken = (data) => {
   }
 } 
 
+export const logOut = () => {
+  return dispatch => {
+    dispatch(apiDispatch(LOGOUT))
+  }
+}
+
 export const toastError = (msg) => {
   return dispatch => {
     dispatch(apiDispatch(TOAST_ERROR, msg));
