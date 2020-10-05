@@ -73,6 +73,10 @@ const LogInForm = () => {
       data = JSON.stringify(data);
       localStorage.removeItem("token");
 
+      dispatch(
+        loginState(true)
+      )
+
       await axios({
         method: 'post',
         url: LOGIN_URL,
@@ -90,6 +94,9 @@ const LogInForm = () => {
               login(data.key)
             );
             dispatch(
+              loginState(false)
+            );
+            dispatch(
               toastSuccess('WELCOME BACK!')
             );
         })
@@ -97,9 +104,35 @@ const LogInForm = () => {
             dispatch(
               loginState(false)
             );
-            dispatch(
-              toastError('Invalid Credentials')
-            );
+            let status = error.response.status;
+            switch(status){
+              case 401:
+                    dispatch(
+                      setError(status, "Authorization required")
+                    )
+                    break;
+              case 500:
+                    dispatch(
+                      setError(status, "Internal Server Error")
+                    )
+                    break;
+              case 400:
+                   console.log('hello')
+                   dispatch(
+                     setError(status,  "You've sent a bad request")
+                   )
+                   dispatch(
+                    toastError('Invalid Credentials')
+                   )
+                   break;
+              default:
+                   dispatch(
+                     setError(0, '')
+                   )
+                   break;
+
+            }
+
         })
     },
   });

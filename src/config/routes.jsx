@@ -9,11 +9,13 @@ import Tasks from "../views/tasklist";
 import TaskDetail from "../views/taskDetail";
 import SignUp from '../views/signup';
 import LogIn from '../views/login';
-
-
+import Loading from '../components/loading';
+import Error from '../components/errors/error';
 
 const ROUTES = [
     {path: "/", key: "ROOT", exact: true, component: LogIn },
+    {path: '/loading', key: "ROOT_LOADING", exact: true, component: Loading},
+    {path: '/error', key: "ROOT_ERROR", exact: true, component: Error},
     {path: '/signup', key: "ROOT_SIGNUP", exact: true, component: SignUp},
     {
         path: "/app",

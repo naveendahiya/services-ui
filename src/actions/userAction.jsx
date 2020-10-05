@@ -98,9 +98,9 @@ export const signup = (data) => {
 }
 
 
-export const setError = (error) => {
+export const setError = (error, errorCode) => {
    return dispatch => {
-    dispatch(apiDispatch(USER_API_ERROR, error));
+    dispatch(apiDispatch(USER_API_ERROR, [error, errorCode]));
   }
 }
 

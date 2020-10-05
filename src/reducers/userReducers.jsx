@@ -25,6 +25,7 @@ const initialState = {
     _id: null,
     isAuth: false,
     error: [],
+    errorCode: 0,
     user: [],
     key: '',
 }
@@ -48,7 +49,7 @@ export default function userReducer(
         case COMPLETE_SIGNUP:
             return {...state, key: payload, isAuth: true};
         case USER_API_ERROR:
-            return {...state, error: payload};
+            return {...state, error: payload[0], errorCode: payload[1]};
         case SET_TOKEN:
             return {...state, key: payload, isAuth: true};
         case LOGOUT:
@@ -56,4 +57,5 @@ export default function userReducer(
         default:
             return state;
     }
+
 }
