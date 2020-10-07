@@ -23,9 +23,10 @@ const TaskCreate = () => {
 
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
-    let history = useHistory()
+    let history = useHistory();
 
     useEffect(() => {
+        console.log('hello')
         navigator.geolocation.getCurrentPosition(function(position) {
             setLatitude(position.coords.latitude);
             setLongitude(position.coords.longitude);

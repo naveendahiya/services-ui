@@ -25,7 +25,8 @@ const initialPendingState = {
 const initialState = {
     ...initialPendingState,
     tasks: [],
-    error: null,
+    errorMsg: '',
+    errorCode: 0,
     addedTask: null,
     selectedTask: [], 
     count: 0,
@@ -66,7 +67,8 @@ export default function taskReducer(
         case TASK_API_ERROR:
             return {
                 ...state,
-                error: error,
+                errorMsg: payload[0],
+                errorCode: payload[1]
             };
         default:
             return state;

@@ -1,6 +1,6 @@
 import apiClient from '../config/apiclient';
 import { PAGINATION_LOADING } from './paginationActionType';
-
+import {ErrorMsg} from '../config/utils';
 import {
     GET_TASK,
     GET_TASK_PENDING,
@@ -44,7 +44,10 @@ export const getTask = (id, params) => {
             dispatch(apiDispatch(GET_TASK, res.data));
           })
           .catch(error => {
-            dispatch(apiError(error));
+            let status = error.response.status;
+            let msg = ErrorMsg(status)
+            dispatch(apiDispatch(GET_TASK_PENDING, false));
+            dispatch(apiError([status, msg]));
           })
     }
 }
@@ -64,7 +67,11 @@ export const getAllTasks = (pageno) => {
              dispatch(apiDispatch(SET_COUNT, res.data.count))
           })
           .catch(error => {
-            dispatch(apiError(TASK_API_ERROR, error));
+            console.log(error)
+            dispatch(apiDispatch(GET_TASK_ALL_PENDING, false))
+            let status = error.response.status;
+            let msg = ErrorMsg(status);
+            dispatch(apiError([status, msg]));
           })
     }
 }

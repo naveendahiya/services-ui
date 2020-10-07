@@ -13,8 +13,8 @@ import "../styles/login.scss";
 export default function LogIn() {
    const isAuth = useSelector(state => state.userReducer.isAuth);
    const loading = useSelector(state => state.userReducer.loginPending);
-   let errorCode  = useSelector(state => state.userReducer.errorCode);
-   let errormsg = useSelector(state => state.userReducer.error);
+   const errorCode  = useSelector(state => state.userReducer.errorCode);
+   const errormsg = useSelector(state => state.userReducer.error);
    let history = useHistory();
 
   useEffect(() => {

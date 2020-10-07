@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import WebSocketInstance from "../config/websocket";
+import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import { Button, Card, Divider, Label, Form, TextArea } from "semantic-ui-react";
 
 export default class Chat extends Component {
@@ -7,6 +9,7 @@ export default class Chat extends Component {
     super(props);
     this.state = {
       messages: [],
+      hide: false, 
     };
 
     this.waitForSocketConnection(() => {
@@ -73,6 +76,24 @@ export default class Chat extends Component {
     )
   }
 
+  toggleMessages(string){
+    let bool = false;
+    switch(string){
+      case 'hide':
+        bool = true;
+        break;
+      case 'show':
+        bool = false;
+        break;
+      default:
+        bool = false;
+        break;
+    }
+    this.setState({
+      hide: bool,
+    })
+  }
+
   render() {
     return (
       <div className="chat">
@@ -108,8 +129,11 @@ export default class Chat extends Component {
             </Card>
           </form>
         </div>
+        <div className="hide-button-box">
+          {this.state.hide ? <div onClick={() => this.toggleMessages('show')} className='hide-button'><ArrowDropDownIcon className='up-hide-icon' /></div> : <div onClick={() => this.toggleMessages('hide')} className='hide-button'><ArrowDropUpIcon className='up-hide-icon'  /></div>}
+        </div>
         <Divider />
-        <div className="messages">
+        <div style={{display: this.state.hide ? 'none': 'block'}} className="messages">
            {this.showMessages()}
         </div>
       </div>

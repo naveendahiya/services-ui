@@ -77,7 +77,7 @@ export const getUser = () => {
       .then(res => {
         dispatch(apiDispatch(GET_USER_PENDING, false));
         dispatch(apiDispatch(GET_USER, res.data));
-        sessionStorage.setItem('user_id', res.data.pk);
+        localStorage.setItem('user_id', res.data.pk);
       })
       .catch(error => {
         dispatch(apiDispatch(GET_USER_PENDING, false));

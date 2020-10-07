@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {getAllTasks,  addTasks} from '../actions/taskAction';
 import {setLoading, setPage} from '../actions/paginationAction';
 import request from "superagent";
+import Loading from '../components/loading';
 import debounce from "lodash.debounce";
 
 const Tasks = () => {
@@ -14,6 +15,7 @@ const Tasks = () => {
   const current = useSelector(state => state.paginationReducer.page);
   const loading = useSelector((state) => state.paginationReducer.loading);
   const count = useSelector(state => state.taskReducer.count)
+  const getAllTaskLoading = useSelector(state => state.taskReducer.getAllTaskPending)
   const [more, setMore] = useState(true);
   const dispatch = useDispatch();
 
@@ -69,28 +71,32 @@ return (
 )
   };
 
-  return (
-    <React.Fragment>
-      <CssBaseline />
-      <Container id='tasks-container' maxWidth="xl">
-        <Typography
-          component="div"
-          style={{
-            backgroundColor: "white",
-            height: "fit-content",
-            marginTop: "0",
-            paddingTop: "70px",
-            paddingBottom: "10px",
-            minHeight: "100vh",
-          }}
-        >
-          {List()}
-          { loading ? <div className='pagination-loading'>loading.......</div> : ''}
-          { more == false ? <div className='pagination-end'>no more tasks avaliable</div> : ''}
-        </Typography>
-      </Container>
-    </React.Fragment>
-  );
+  if(getAllTaskLoading == true){
+    return <Loading />
+  }else{
+    return (
+      <React.Fragment>
+        <CssBaseline />
+        <Container id='tasks-container' maxWidth="xl">
+          <Typography
+            component="div"
+            style={{
+              backgroundColor: "white",
+              height: "fit-content",
+              marginTop: "0",
+              paddingTop: "70px",
+              paddingBottom: "10px",
+              minHeight: "100vh",
+            }}
+          >
+            {List()}
+            { loading ? <div className='pagination-loading'>loading.......</div> : ''}
+            { more == false ? <div className='pagination-end'>no more tasks avaliable</div> : ''}
+          </Typography>
+        </Container>
+      </React.Fragment>
+    );
+  }
 };
 
 export default Tasks;

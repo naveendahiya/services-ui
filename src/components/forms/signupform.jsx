@@ -70,6 +70,10 @@ const SignUpForm = () => {
       data = JSON.stringify(data);
       localStorage.removeItem('token');
 
+      dispatch(
+        signupState(true)
+      )
+
       await axios({
         method: 'post',
         url: SIGNUP_URL,
@@ -86,22 +90,43 @@ const SignUpForm = () => {
               signup(data.key)
             );
             dispatch(
+              signupState(false)
+            )
+            dispatch(
               toastSuccess('ACCOUNT CREATED')
             );
         })
         .catch(error => {
-          console.log(error.response.data)
           dispatch(
             signupState(false)
           );  
-          dispatch(
-            setError(error.response.data)
-          );
-          setInterval(() => {
-            dispatch(
-              emptyError()
-            );
-          }, 5000);
+          let status = error.response.status;
+          switch(status){
+            case 401: 
+                dispatch(
+                  setError(status, "Athorization required")
+                )
+                break;
+            case 500:
+                dispatch(
+                  setError(status, "Internal Server Error")
+                )
+                break;
+            case 400:
+                dispatch(
+                  setError(status, "You've sent a bad request")
+                )
+                dispatch(
+                  toastError('Check your Credentials')
+                )
+                break;
+            default:
+                dispatch(
+                  setError(0, '')
+                )
+                break;
+          }
+
         })
     },
   });
