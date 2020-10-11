@@ -5,6 +5,7 @@ import userReducer from './userReducers';
 import toastReducer from './toastReducers';
 import paginationReducer from './paginationReducer';
 import locationReducer from './locationReducer';
+import questionReducer from './questionReducer';
 
 const appReducer = combineReducers({
     taskReducer,
@@ -13,6 +14,7 @@ const appReducer = combineReducers({
     toastReducer,
     paginationReducer,
     locationReducer,
+    questionReducer,
 });
 
 const rootReducer = (state, action) => {

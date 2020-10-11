@@ -6,7 +6,7 @@ import profile from '../images/user.svg';
 import locationIcon from '../images/location.svg';
 import calendar from '../images/calendar.svg';
 import '../styles/taskDetail.scss';
-import {Button, Card, Divider, Label} from 'semantic-ui-react'
+import {Button, Card, Divider, Label} from 'semantic-ui-react';
 import BidCard from "../components/cards/bidCard";
 import BidForm from "../components/forms/bidForm";
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
@@ -24,8 +24,9 @@ import {getTaskBid} from '../actions/bidAction';
 import {getLocation} from '../actions/locationAction';
 import Loading from '../components/loading';
 import Error from '../components/errors/error';
+import Questions from '../components/questions';
 import ExploreIcon from '@material-ui/icons/Explore';
-import {GetCity} from '../config/utils';
+// import {GetCity} from '../config/utils';
 const { forwardRef, useRef } = React;
 
 
@@ -72,9 +73,9 @@ function TaskDetail(props) {
     let map_url = `http://maps.google.com/maps?z=15&t=m&q=loc:${location.latitude}+${location.longitude}`;
     useEffect(() => {
         map_url = `http://maps.google.com/maps?z=15&t=m&q=loc:${location.latitude}+${location.longitude}`;
-        let result = GetCity(location.pincode, 'Australia');
-        city = result[0];
-        state = result[1]; 
+        // let result = GetCity(location.pincode, 'Australia');
+        // city = result[0];
+        // state = result[1];
     }, [location]);
     //------------>>>>>>>
 
@@ -185,16 +186,18 @@ function TaskDetail(props) {
                                    {taskdata.description}
                                </div>
                            </div>
-                           <Divider />
-                           <div style={{display: taskdata.selected == -1 ? 'block' : 'none'}} className='outer detail-offer'>
+                           <div style={{display: taskdata.selected === -1 ? 'block' : 'none'}} className='outer detail-offer'>
+                               <Divider />
                                <span>Offers</span>
                                <div className='detail-offer-list'>
                                    {OfferList()}
                                </div>
+                               <Divider />
+                               <Questions id={id} creater={taskdata.creater} />
                            </div>
                            <Divider />
                            <div className="outer">
-                                 {taskdata.selected == -1 ? "" : <Chat />}
+                                 {taskdata.selected === -1 ? "" : <Chat />}
                            </div>
                        </div>
                     </Typography>

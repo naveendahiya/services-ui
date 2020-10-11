@@ -18,33 +18,33 @@ export function ErrorMsg(status){
 }
 
 
-export function GetCity(code, country){
-  var geocoder = new google.maps.Geocoder();
-
-  geocoder.geocode({ 'address': code + ',' + country }, function (result, status) {
-  
-      var stateName = '';
-      var cityName = '';
-  
-      var addressComponent = result[0]['address_components'];
-  
-      // find state data
-      var stateQueryable = $.grep(addressComponent, function (x) {
-          return $.inArray('administrative_area_level_1', x.types) != -1;
-      });
-  
-      if (stateQueryable.length) {
-          stateName = stateQueryable[0]['long_name'];
-  
-          var cityQueryable = $.grep(addressComponent, function (x) {
-              return $.inArray('locality', x.types) != -1;
-          });
-  
-          // find city data
-          if (cityQueryable.length) {
-              cityName = cityQueryable[0]['long_name'];
-          }
-      }
-  });
-  return [cityName, stateName];
-}
+// export function GetCity(code, country){
+//   var geocoder = new google.maps.Geocoder();
+//
+//   geocoder.geocode({ 'address': code + ',' + country }, function (result, status) {
+//
+//       var stateName = '';
+//       var cityName = '';
+//
+//       var addressComponent = result[0]['address_components'];
+//
+//       // find state data
+//       var stateQueryable = $.grep(addressComponent, function (x) {
+//           return $.inArray('administrative_area_level_1', x.types) != -1;
+//       });
+//
+//       if (stateQueryable.length) {
+//           stateName = stateQueryable[0]['long_name'];
+//
+//           var cityQueryable = $.grep(addressComponent, function (x) {
+//               return $.inArray('locality', x.types) != -1;
+//           });
+//
+//           // find city data
+//           if (cityQueryable.length) {
+//               cityName = cityQueryable[0]['long_name'];
+//           }
+//       }
+//   });
+//   return [cityName, stateName];
+// }
